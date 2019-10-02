@@ -4,25 +4,41 @@ using UnityEngine;
 
 public class ControllerAwaker : MonoBehaviour
 {
-    public GameObject crossSceneMessageSender;
-    public GameObject musicController;
+    //负责在开始界面生成多个跨场景的对象
+
+
+    //prefabs
+    public GameObject messageSender;
+    public GameObject bKMusicController;
+    public GameObject buttonSoundController;
+
     //public GameObject buttonController;
 
+
+    //记录生成的实例，用来改变生成实例的名字(主要是去除"clone",避免查找物体出现问题)
     private GameObject existentCrossSceneMessageSender;
-    private GameObject existentCrossSceneMusicController;
+    private GameObject existentCrossSceneBKMusicController;
+    private GameObject existentCrossSceneButtonSoundController;
+
+
     //private GameObject existentCrossSceneButtonController;
     // Start is called before the first frame update
     private void Awake()
     {
         if (!MessageSender.whetherExist)
         {
-            existentCrossSceneMessageSender=Instantiate(crossSceneMessageSender, transform.position,transform.rotation)as GameObject;
-            existentCrossSceneMessageSender.name = crossSceneMessageSender.name;
+            existentCrossSceneMessageSender=Instantiate(messageSender, transform.position,transform.rotation)as GameObject;
+            existentCrossSceneMessageSender.name = messageSender.name;
         }
-        if (!MusicController.whetherExist)
+        if (!BKMusicPlayer.whetherExist)
         {
-            existentCrossSceneMusicController=Instantiate(musicController, transform.position,transform.rotation)as GameObject;
-            existentCrossSceneMusicController.name = musicController.name;
+            existentCrossSceneBKMusicController=Instantiate(bKMusicController, transform.position,transform.rotation)as GameObject;
+            existentCrossSceneBKMusicController.name = bKMusicController.name;
+        }
+        if (!ButtonSoundPlayer.whetherExist)
+        {
+            existentCrossSceneButtonSoundController = Instantiate(buttonSoundController, transform.position, transform.rotation) as GameObject;
+            existentCrossSceneButtonSoundController.name = buttonSoundController.name;
         }
         /*
         if (!ButtonController.whetherExist)

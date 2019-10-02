@@ -6,12 +6,48 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/StartScene.unity
+    path: Assets/Scenes/Interface/StartScene.unity
     guid: ac6bb547feeef8b45be16f74ddd27f09
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/Scenes/Interface/SettingScene.unity
+    guid: 4779b030ac56a9f45a223d6b73025ed0
   - enabled: 1
-    path: Assets/Scenes/ZeroScene.unity
+    path: Assets/Scenes/Interface/SettingSkinScene.unity
+    guid: 005b56c8bcc7ca4469b7ca35874acb29
+  - enabled: 1
+    path: Assets/Scenes/Interface/HelpScene.unity
+    guid: 619b6b4dc2c498c4f9e9605387cba69c
+  - enabled: 1
+    path: Assets/Scenes/Interface/SettingGameModeScene.unity
+    guid: 943de66b8576cbc49942250509879707
+  - enabled: 0
+    path: 
+    guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 0
+    path: 
     guid: 0aecf83bb080c8940aaf4c8e61340ba5
+  - enabled: 1
+    path: Assets/Scenes/Interface/SettingLevelScene.unity
+    guid: fc0a809d84ed25046b4102db60c990ec
+  - enabled: 1
+    path: Assets/Scenes/GameScene/a_Risk/Game0RiskScene.unity
+    guid: 915075be73e7d434888f0ddd440ebbea
+  - enabled: 1
+    path: Assets/Scenes/GameScene/b_Storm/Game1StormLevel0Scene.unity
+    guid: 3cfcba30fefecda4696cf43f47f3ccd5
+  - enabled: 1
+    path: Assets/Scenes/GameScene/b_Storm/Game1StormLevel1Scene.unity
+    guid: 96c1f943f1a9ad44db77ed7ee10a07fb
+  - enabled: 1
+    path: Assets/Scenes/GameScene/b_Storm/Game1StormLevel2Scene.unity
+    guid: ef3c8871159286f4b89ee2b7337e1a4c
+  - enabled: 1
+    path: Assets/Scenes/GameScene/b_Storm/Game1StormLevel3Scene.unity
+    guid: 01f97df77b369594b88153d78caadce6
+  - enabled: 1
+    path: Assets/Scenes/GameScene/c_Diamonds/Game2DiamondsScene.unity
+    guid: b6f05e41213ce954593998b4b9a0199e
+  - enabled: 1
+    path: Assets/Scenes/GameScene/d_Color/Game3ColorScene.unity
+    guid: bdfb97b904d1456449029619de5d9e27
   m_configObjects: {}

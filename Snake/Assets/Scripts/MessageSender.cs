@@ -4,13 +4,19 @@ using UnityEngine;
 
 public class MessageSender : MonoBehaviour
 {
+    /*******************
+    *用于场景间信息传递
+    * 
+    ****************/
+
     public static bool whetherExist=false;
     public static GameObject theExistentMessageSender;
+    public static float soundVolume=1f;//存储音效的音量
 
-    private static int gameModeNum;
-    private static int skinNum=0;
-    private static int levelNum;
-    private static int difficultyNum=0;
+    private static int gameModeNum=0;//0 Risk   1 storm    2 diamonds  3 color
+    private static int skinNum=0;//0 浅蓝绿色   1  浅橙色   2  浅蓝色   3 暗绿色
+    private static int levelNum=0;//0  第一关   1 第二关  2 第三关  3 第四关
+    private static int difficultyNum=0;//0 简单    1 普通    2 困难
 
     private void Awake()
     {
@@ -21,12 +27,13 @@ public class MessageSender : MonoBehaviour
 
 
 
-    public void SetGameModeNum(int gameModenum)
+    public static void SetGameModeNum(int gameModenum)
     {
         MessageSender.gameModeNum = gameModenum;
+        print("SetGameMode:" + MessageSender.gameModeNum);
     }
-    
-    public int GetGameModeNum()
+
+    public static int GetGameModeNum()
     {
         return MessageSender.gameModeNum;
     }
@@ -34,12 +41,13 @@ public class MessageSender : MonoBehaviour
 
 
 
-    public void SetSkinNum(int skinnum)
+    public static void SetSkinNum(int skinnum)
     {
         MessageSender.skinNum = skinnum;
+        print("SetSkin:" + MessageSender.skinNum);
     }
 
-    public int GetSkinNum()
+    public static int GetSkinNum()
     {
         return MessageSender.skinNum;
     }
@@ -48,36 +56,27 @@ public class MessageSender : MonoBehaviour
 
 
 
-    public void SetLevelNum(int levelnum)
+    public static void SetLevelNum(int levelnum)
     {
         MessageSender.levelNum = levelnum;
+        print("SetLevel:" + MessageSender.levelNum);
     }
 
-    public int GetLevelNum()
+    public static int GetLevelNum()
     {
         return MessageSender.levelNum;
     }
 
 
-    public void SetDifficultyNum(int difficultynum)
+    public static void SetDifficultyNum(int difficultynum)
     {
         MessageSender.difficultyNum = difficultynum;
+        print("SetDifficulty:" + MessageSender.difficultyNum);
     }
-    public int GetDifficultyNum()
+    public static int GetDifficultyNum()
     {
         return MessageSender.difficultyNum;
     }
 
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

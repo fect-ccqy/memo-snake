@@ -62,10 +62,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\SceneButtonManager.cs" />
+    <Compile Include="Assets\Scripts\BKMusicPlayer.cs" />
+    <Compile Include="Assets\Scripts\BKMusicSlider.cs" />
+    <Compile Include="Assets\Scripts\ButtonSoundPlayer.cs" />
     <Compile Include="Assets\Scripts\ControllerAwaker.cs" />
+    <Compile Include="Assets\Scripts\DifficlultySetter.cs" />
+    <Compile Include="Assets\Scripts\GameModeSetter.cs" />
+    <Compile Include="Assets\Scripts\HelpInterfaceSetter.cs" />
+    <Compile Include="Assets\Scripts\LevelSetter.cs" />
     <Compile Include="Assets\Scripts\MessageSender.cs" />
-    <Compile Include="Assets\Scripts\MusicController.cs" />
+    <Compile Include="Assets\Scripts\SceneButtonManager.cs" />
+    <Compile Include="Assets\Scripts\SkinSetter.cs" />
+    <Compile Include="Assets\Scripts\SoundSlider.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>D:/unity 2018/Snake/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
