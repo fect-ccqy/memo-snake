@@ -8,6 +8,6 @@ public class SkinSetter : MonoBehaviour
 
     public void ChooseOneSkin(int skinnum)
     {
-        MessageSender.SetSkinNum(skinnum);
+        MessageSender.GetTheInstance().SetSkinNum(skinnum);
     }
 }

@@ -5,68 +5,87 @@ using UnityEngine;
 public class Snake : MonoBehaviour
 {
 
-
     
-    private GameObject nextSnakeBodyObj;
-    private SnakeBody nextSnakeBody;
+    private static Snake theInstance;
+    private static int oneStepNum = 3;
+    private static int arrayLength = 6;
 
 
-   
+    //********************************************************************
+    //一些会用到的变量
 
-
-    public static float snakeSpeed = 20f;
-    private static GameObject snakeHeadObj;
-    private static GameObject snakeTailObj;
-    private static SnakeBody snakeTail;
-    private static Transform snakeTailTrans;
-
-
-
-
-
-    //private static float stepLen = 1.5f;
-    //private static float fPerSec=50f;
-    //public static int oneStepNum = (int)(fPerSec * stepLen / snakeSpeed);
-
-
-    private static int snakeLength;//不包括蛇头
-
-    //循环队列  记录蛇头的历史位置，为后面体节的移动提供pos和rot   避免出现范例中蛇的体节所走轨迹与实际蛇头轨迹不一致的现象(在范例里面，体节的轨迹会摇摆(～￣▽￣)～～ )
-    //话说范例里的bug有点多啊，，，是担心被反编译吗 (;￢_￢)
-    public static int oneStepNum = 2;
-    public static int arrayLength = 6;
-    public static Vector2[] historyPosArray = new Vector2[Snake.arrayLength];
-    public static Quaternion[] historyRotArray = new Quaternion[Snake.arrayLength];
-    public static int qhead, qtail;//qhead为保存的最新的，qtail为最旧的    从head加入新元素，从tail删除
-
-
-    private SpriteRenderer thisSpriteRenderer;
-
-    private Sprite snakeHeadSpr;
-    private Sprite snakeDizzyHeadSpr;
-    private Sprite snakeBodySpr;
-
+    private float snakeSpeed = 20f;
+    private int snakeLength;//不包括蛇头
     private Rigidbody2D thisRigidbody2d;
-
-
-    private static GameObject snakeBodyObj;
-    private static SpriteRenderer snakeBodySpriteRenderer;
-
-    private string spritePathFa = "Sprites/Snake/";
-    private string spritePathHead = "snakeHead_";
-    private string spritePathDizzy = "snakeDizzy_";
-    private string spritePathBody = "snake_";
-    private string[] spritePathColor = {"green","red","purple","darkgreen" };
-
-
-    //***
     public Vector2 dHeadTowards;
     private Vector3 midScreenPos = new Vector3(Screen.width / 2, Screen.height / 2, 0f);
+    //会频繁使用的临时变量
     private GameObject tSnakeBodyObj;
     private SnakeBody tSnakeBody;
 
 
+    //循环队列  记录蛇头的历史位置，为后面体节的移动提供pos和rot   避免出现范例中蛇的体节所走轨迹与实际蛇头轨迹不一致的现象(在范例里面，体节的轨迹会摇摆(～￣▽￣)～～ )
+    //话说范例里的bug有点多啊，，，是担心被反编译吗 (;￢_￢)
 
+    private Vector2[] historyPosArray = new Vector2[Snake.arrayLength];
+    private Quaternion[] historyRotArray = new Quaternion[Snake.arrayLength];
+    private int qhead, qtail;//qhead为保存的最新的，qtail为最旧的    从head加入新元素，从tail删除
+
+
+
+    //********************************************************************
+    //资源相关
+    private string spritePathFa = "Sprites/Snake/";
+    private string spritePathHead = "snakeHead_";
+    private string spritePathDizzy = "snakeDizzy_";
+    private string spritePathBody = "snake_";
+    private string[] spritePathColor = { "green", "red", "purple", "darkgreen" };
+    private Sprite snakeHeadSpr;
+    private Sprite snakeDizzyHeadSpr;
+    private Sprite snakeBodySpr;
+    private SpriteRenderer thisSpriteRenderer;
+    private GameObject snakeBodyObj;
+    private SpriteRenderer snakeBodySpriteRenderer;
+
+
+    //********************************************************************
+    //头尾以及下一个体节
+    private GameObject nextSnakeBodyObj;
+    private SnakeBody nextSnakeBody;
+    
+    private GameObject snakeHeadObj;
+    private GameObject snakeTailObj;
+    private SnakeBody snakeTail;
+    private Transform snakeTailTrans;
+
+
+
+    
+
+    
+    public static Snake GetTheInstance()
+    {
+        return Snake.theInstance;
+    }
+    public static int GetArrayLength()
+    {
+        return Snake.arrayLength;
+    }
+    public static int GetOneStepNum()
+    {
+        return oneStepNum;
+    }
+    
+
+    public Vector3 GetHistoryPos()
+    {
+        return historyPosArray[(qhead + Snake.oneStepNum-1) % Snake.arrayLength];
+    }
+
+    public Quaternion GetHistoryRot()
+    {
+        return historyRotArray[(qhead + Snake.oneStepNum-1) % Snake.arrayLength];
+    }
 
 
     //***************************************************************************
@@ -79,32 +98,32 @@ public class Snake : MonoBehaviour
         for (int i = 0; i < Snake.arrayLength; i++)
         {
 
-            Snake.historyPosArray[i] = transform.position;
-            Snake.historyRotArray[i] = transform.rotation;
+            historyPosArray[i] = transform.position;
+            historyRotArray[i] = transform.rotation;
         }
-        Snake.qhead = 0;
-        Snake.qtail = Snake.arrayLength - 1;
+        qhead = 0;
+        qtail = Snake.arrayLength - 1;
     }
 
     //加载皮肤的sprite
     private void LoadSkinSprite()
     {
-        print("StartloadSkinSprite SkinNum=" + MessageSender.GetSkinNum());
-        snakeHeadSpr = Resources.Load<Sprite>(spritePathFa + spritePathHead + spritePathColor[MessageSender.GetSkinNum()]);
-        snakeDizzyHeadSpr = Resources.Load<Sprite>(spritePathFa + spritePathDizzy + spritePathColor[MessageSender.GetSkinNum()]);
-        snakeBodySpr = Resources.Load<Sprite>(spritePathFa + spritePathBody + spritePathColor[MessageSender.GetSkinNum()]);
-        print("FinishLoadSkinSprite SkinNum=" + MessageSender.GetSkinNum());
+        print("StartloadSkinSprite SkinNum=" + MessageSender.GetTheInstance().GetSkinNum());
+        snakeHeadSpr = Resources.Load<Sprite>(spritePathFa + spritePathHead + spritePathColor[MessageSender.GetTheInstance().GetSkinNum()]);
+        snakeDizzyHeadSpr = Resources.Load<Sprite>(spritePathFa + spritePathDizzy + spritePathColor[MessageSender.GetTheInstance().GetSkinNum()]);
+        snakeBodySpr = Resources.Load<Sprite>(spritePathFa + spritePathBody + spritePathColor[MessageSender.GetTheInstance().GetSkinNum()]);
+        print("FinishLoadSkinSprite SkinNum=" + MessageSender.GetTheInstance().GetSkinNum());
 
     }
 
 
     private void SetPrefabSnakeHeadAndBody()
     {
-        Snake.snakeBodyObj = Resources.Load<GameObject>("Prefabs/SnakeBody");
-        Snake.snakeBodySpriteRenderer = Snake.snakeBodyObj.GetComponent<SpriteRenderer>();
-        Snake.snakeBodySpriteRenderer.sprite = snakeBodySpr;
+        snakeBodyObj = Resources.Load<GameObject>("Prefabs/SnakeBody");
+        snakeBodySpriteRenderer = snakeBodyObj.GetComponent<SpriteRenderer>();
+        snakeBodySpriteRenderer.sprite = snakeBodySpr;
 
-        if (Snake.snakeBodyObj == null) print("null");
+        if (snakeBodyObj == null) print("null");
         thisSpriteRenderer = GetComponent<SpriteRenderer>();
         thisSpriteRenderer.sprite = snakeHeadSpr;
         print("get the skin");
@@ -113,23 +132,23 @@ public class Snake : MonoBehaviour
 
     private void InstantiateFirstBody()
     {
-        nextSnakeBodyObj = Instantiate(Snake.snakeBodyObj, transform.position, transform.rotation) as GameObject;
+        nextSnakeBodyObj = Instantiate(snakeBodyObj, transform.position, transform.rotation) as GameObject;
         nextSnakeBody = nextSnakeBodyObj.GetComponent<SnakeBody>();
-        Snake.snakeLength = 1;
-        nextSnakeBody.SetAllMemember(gameObject, transform, null, Snake.snakeLength, null, null);
+        snakeLength = 1;
+        nextSnakeBody.SetAllMemember(gameObject, transform, null, snakeLength, null, null);
     }
 
 
     private void SetStartHeadAndTail()
     {
 
-        Snake.snakeHeadObj = gameObject;
+        snakeHeadObj = gameObject;
 
-        Snake.snakeTailObj = nextSnakeBodyObj;
-        Snake.snakeTail = nextSnakeBody;
-        Snake.snakeTailTrans = nextSnakeBodyObj.transform;
+        snakeTailObj = nextSnakeBodyObj;
+        snakeTail = nextSnakeBody;
+        snakeTailTrans = nextSnakeBodyObj.transform;
 
-        Snake.snakeBodySpriteRenderer.sortingOrder--;
+        snakeBodySpriteRenderer.sortingOrder--;
 
     }
 
@@ -139,40 +158,40 @@ public class Snake : MonoBehaviour
     //对蛇的相关操作
 
 
-    private void AddOneBody()
+    public void AddOneBody()
     {
-        Snake.snakeLength++;
-        tSnakeBodyObj = Instantiate(Snake.snakeBodyObj, Snake.snakeTailTrans.position, Snake.snakeTailTrans.rotation) as GameObject;
+        snakeLength++;
+        tSnakeBodyObj = Instantiate(snakeBodyObj, snakeTailTrans.position, snakeTailTrans.rotation) as GameObject;
         tSnakeBody = tSnakeBodyObj.GetComponent<SnakeBody>();
 
-        Snake.snakeTail.SetNextBody(tSnakeBodyObj, tSnakeBody);
+        snakeTail.SetNextBody(tSnakeBodyObj, tSnakeBody);
 
-        tSnakeBody.SetAllMemember(Snake.snakeTailObj, Snake.snakeTailTrans,Snake.snakeTail,Snake.snakeLength,null,null);
+        tSnakeBody.SetAllMemember(snakeTailObj, snakeTailTrans,snakeTail,snakeLength,null,null);
 
-        Snake.snakeTailObj = tSnakeBodyObj;
-        Snake.snakeTail = tSnakeBody;
-        Snake.snakeTailTrans = tSnakeBodyObj.transform;
-        Snake.snakeBodySpriteRenderer.sortingOrder--;
+        snakeTailObj = tSnakeBodyObj;
+        snakeTail = tSnakeBody;
+        snakeTailTrans = tSnakeBodyObj.transform;
+        snakeBodySpriteRenderer.sortingOrder--;
     }
 
 
-    private void MinusOneBody()
+    public void MinusOneBody()
     {
-        Snake.snakeLength--;
-        Snake.snakeTailObj = Snake.snakeTail.GetLastSnakeBodyObj();
-        Snake.snakeTail = Snake.snakeTailObj.GetComponent<SnakeBody>();
-        Snake.snakeTailTrans = Snake.snakeTailObj.transform;
+        snakeLength--;
+        snakeTailObj = snakeTail.GetLastSnakeBodyObj();
+        snakeTail = snakeTailObj.GetComponent<SnakeBody>();
+        snakeTailTrans = snakeTailObj.transform;
 
-        Destroy(Snake.snakeTail.GetNextSnakeBodyObj());
+        Destroy(snakeTail.GetNextSnakeBodyObj());
 
-        Snake.snakeTail.SetNextBody(null,null);
-        Snake.snakeBodySpriteRenderer.sortingOrder++;
+        snakeTail.SetNextBody(null,null);
+        snakeBodySpriteRenderer.sortingOrder++;
     }
 
 
-    private void DoubleSnakeBody()
+    public void DoubleSnakeBody()
     {
-        int addNum = Snake.snakeLength;
+        int addNum = snakeLength;
         for(int i = 0; i < addNum; i++)
         {
             AddOneBody();
@@ -182,9 +201,9 @@ public class Snake : MonoBehaviour
     }
 
 
-    private void HalfSnakeBody()
+    public void HalfSnakeBody()
     {
-        int minusNum = Snake.snakeLength/2;
+        int minusNum = snakeLength/2;
         for (int i = 0; i < minusNum; i++)
         {
             MinusOneBody();
@@ -192,7 +211,7 @@ public class Snake : MonoBehaviour
     }
 
 
-    private void AddNBody(int addN)
+    public void AddNBody(int addN)
     {
         for (int i = 0; i < addN; i++)
         {
@@ -201,7 +220,7 @@ public class Snake : MonoBehaviour
     }
 
 
-    private void MinusNBody(int minusN)
+    public void MinusNBody(int minusN)
     {
         for (int i = 0; i < minusN; i++)
         {
@@ -212,18 +231,18 @@ public class Snake : MonoBehaviour
 
     private void SetHistoryArray()
     {
-        Snake.historyPosArray[Snake.qtail] = transform.position;
-        Snake.historyRotArray[Snake.qtail] = transform.rotation;
+        historyPosArray[qtail] = transform.position;
+        historyRotArray[qtail] = transform.rotation;
 
-        Snake.qhead--;
-        Snake.qtail--;
-        if (Snake.qhead < 0)
+        qhead--;
+        qtail--;
+        if (qhead < 0)
         {
-            Snake.qhead += Snake.arrayLength;
+            qhead += Snake.arrayLength;
         }
-        if (Snake.qtail < 0)
+        if (qtail < 0)
         {
-            Snake.qtail += Snake.arrayLength;
+            qtail += Snake.arrayLength;
         }
     }
 
@@ -234,6 +253,7 @@ public class Snake : MonoBehaviour
 
     private void Awake()
     {
+        theInstance = this;
         thisRigidbody2d = GetComponent<Rigidbody2D>();
 
         SetStartHistoryArray();
@@ -282,7 +302,7 @@ public class Snake : MonoBehaviour
         {
             //dHeadTowards = Input.mousePosition - midScreenPos;//获得鼠标相对屏幕中心的位移矢量  即方法2的处理方式
             transform.up = dHeadTowards;
-            thisRigidbody2d.velocity = transform.up * Snake.snakeSpeed;
+            thisRigidbody2d.velocity = transform.up * snakeSpeed;
         }
 
        
@@ -308,6 +328,6 @@ public class Snake : MonoBehaviour
         //避免出现在离开物体时，蛇头相对鼠标的位移矢量的模长平方小于1.6，速度依然保持与物体接触时相同的bug
         dHeadTowards = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
         transform.up = dHeadTowards;
-        thisRigidbody2d.velocity = transform.up * Snake.snakeSpeed;
+        thisRigidbody2d.velocity = transform.up * snakeSpeed;
     }
 }

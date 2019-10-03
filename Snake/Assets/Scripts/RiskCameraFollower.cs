@@ -2,16 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraFollower : MonoBehaviour
+public class RiskCameraFollower : MonoBehaviour
 {
-    
-
-    public Transform playerTransform;
+    [SerializeField] private Transform playerTransform;
 
     private float smoothK = 0.24f;
 
 
-    
+
     //private Vector3 leftDownPoint = new Vector3(0, 0, 0);
 
 
@@ -20,7 +18,7 @@ public class CameraFollower : MonoBehaviour
     private Vector3 dPos;
     private float dLen;
 
-    
+
     private Vector3 leftDownWorldPoint;
     private Vector3 rightUpWorldPoint;
 
@@ -62,7 +60,7 @@ public class CameraFollower : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -74,25 +72,25 @@ public class CameraFollower : MonoBehaviour
         transform.position +=dPos;
         */
 
-        
+
         /*
         Vector3 tPos = playerTransform.position;
         tPos.z = transform.position.z;
         transform.position = tPos;
         */
-        
-        
-        
+
+
+
     }
     private void FixedUpdate()
     {
         tarPos = playerTransform.position;
 
-        if (tarPos.x<leftDownWorldPoint.x)
+        if (tarPos.x < leftDownWorldPoint.x)
         {
             tarPos.x = leftDownWorldPoint.x;
         }
-        else if (tarPos.x>rightUpWorldPoint.x)
+        else if (tarPos.x > rightUpWorldPoint.x)
         {
             tarPos.x = rightUpWorldPoint.x;
         }
@@ -101,24 +99,24 @@ public class CameraFollower : MonoBehaviour
         {
             tarPos.y = leftDownWorldPoint.y;
         }
-        else if (tarPos.y>rightUpWorldPoint.y)
+        else if (tarPos.y > rightUpWorldPoint.y)
         {
             tarPos.y = rightUpWorldPoint.y;
         }
 
-        
+
 
 
         dPos = tarPos - transform.position;
         dLen = dPos.sqrMagnitude;
         dPos.z = 0;
-        dPos = dPos *dLen* smoothK * Time.fixedDeltaTime;
-        
+        dPos = dPos * dLen * smoothK * Time.fixedDeltaTime;
+
         transform.position += dPos;
-        
 
 
-       
+
+
 
     }
 }

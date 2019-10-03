@@ -12,11 +12,12 @@ public class SnakeBody : MonoBehaviour
     private SnakeBody nextsnakebody;
 
 
-    public Vector2[] historyPosArray = new Vector2[Snake.arrayLength];
-    public Quaternion[] historyRotArray = new Quaternion[Snake.arrayLength];
-    public int qhead, qtail;
+    private Vector2[] historyPosArray = new Vector2[Snake.GetArrayLength()];
+    private Quaternion[] historyRotArray = new Quaternion[Snake.GetArrayLength()];
+    private int qhead, qtail;
 
-
+    private int arrayLen;
+    private int oneStepNum;
     //
     private int tTransArrayNum;
 
@@ -62,6 +63,8 @@ public class SnakeBody : MonoBehaviour
     
     private void Awake()
     {
+        oneStepNum = Snake.GetOneStepNum();
+        arrayLen = Snake.GetArrayLength();
         SetStartHistoryArray();
     }
 
@@ -73,14 +76,14 @@ public class SnakeBody : MonoBehaviour
     //初始化方法
     private void SetStartHistoryArray()
     {
-        for (int i = 0; i < Snake.arrayLength; i++)
+        for (int i = 0; i < arrayLen; i++)
         {
 
             historyPosArray[i] = transform.position;
             historyRotArray[i] = transform.rotation;
         }
         qhead = 0;
-        qtail = Snake.arrayLength - 1;
+        qtail = arrayLen - 1;
     }
 
 
@@ -92,15 +95,15 @@ public class SnakeBody : MonoBehaviour
     {
         if (theNum != 1)
         {
-            tTransArrayNum = (lastsnakebody.qhead + Snake.oneStepNum) % Snake.arrayLength;
+            tTransArrayNum = (lastsnakebody.qhead + oneStepNum) % arrayLen;
             transform.position = lastsnakebody.historyPosArray[tTransArrayNum];
             transform.rotation = lastsnakebody.historyRotArray[tTransArrayNum];
         }
         else
         {
-            tTransArrayNum = (Snake.qhead + Snake.oneStepNum) % Snake.arrayLength;
-            transform.position = Snake.historyPosArray[tTransArrayNum];
-            transform.rotation = Snake.historyRotArray[tTransArrayNum];
+
+            transform.position = Snake.GetTheInstance().GetHistoryPos();
+            transform.rotation = Snake.GetTheInstance().GetHistoryRot();
         }
     }
 
@@ -115,11 +118,11 @@ public class SnakeBody : MonoBehaviour
 
         if (qhead < 0)
         {
-            qhead += Snake.arrayLength;
+            qhead += arrayLen;
         }
         if (qtail < 0)
         {
-            qtail += Snake.arrayLength;
+            qtail += arrayLen;
         }
     }
 

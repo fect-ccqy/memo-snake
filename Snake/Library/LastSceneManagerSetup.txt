@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Scenes/GameScene/a_Risk/Game0RiskScene.unity
+- path: Assets/Scenes/Interface/SettingScene.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0

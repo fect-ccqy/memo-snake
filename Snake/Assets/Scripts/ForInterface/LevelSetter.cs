@@ -8,6 +8,6 @@ public class LevelSetter : MonoBehaviour
 
     public void ChooseOneLevel(int levelnum)
     {
-        MessageSender.SetLevelNum(levelnum);
+        MessageSender.GetTheInstance().SetLevelNum(levelnum);
     }
 }

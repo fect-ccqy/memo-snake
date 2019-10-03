@@ -8,9 +8,9 @@ public class ControllerAwaker : MonoBehaviour
 
 
     //prefabs
-    public GameObject messageSender;
-    public GameObject bKMusicController;
-    public GameObject buttonSoundController;
+    private GameObject messageSender;
+    private GameObject bKMusicController;
+    private GameObject buttonSoundController;
 
     //public GameObject buttonController;
 
@@ -25,18 +25,26 @@ public class ControllerAwaker : MonoBehaviour
     // Start is called before the first frame update
     private void Awake()
     {
-        if (!MessageSender.whetherExist)
+
+
+
+
+        if (!MessageSender.GetWhetherExist())
         {
+            messageSender = Resources.Load<GameObject>("Prefabs/CrossSceneMessageSender");
             existentCrossSceneMessageSender=Instantiate(messageSender, transform.position,transform.rotation)as GameObject;
             existentCrossSceneMessageSender.name = messageSender.name;
         }
-        if (!BKMusicPlayer.whetherExist)
+        if (!BKMusicPlayer.GetWhetherExist())
         {
+            bKMusicController = Resources.Load<GameObject>("Prefabs/CrossSceneBKMusicController");
             existentCrossSceneBKMusicController=Instantiate(bKMusicController, transform.position,transform.rotation)as GameObject;
             existentCrossSceneBKMusicController.name = bKMusicController.name;
         }
-        if (!ButtonSoundPlayer.whetherExist)
+        if (!ButtonSoundPlayer.GetWhetherExist())
         {
+
+            buttonSoundController = Resources.Load<GameObject>("Prefabs/CrossSceneButtonSoundController");
             existentCrossSceneButtonSoundController = Instantiate(buttonSoundController, transform.position, transform.rotation) as GameObject;
             existentCrossSceneButtonSoundController.name = buttonSoundController.name;
         }

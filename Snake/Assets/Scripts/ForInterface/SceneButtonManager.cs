@@ -25,7 +25,7 @@ public class SceneButtonManager : MonoBehaviour
 
     public void PlayClickButtonSound()
     {
-        ButtonSoundPlayer.PlayButtonSound();
+        ButtonSoundPlayer.GetTheInstance().PlayButtonSound();
     }
 
 
@@ -66,7 +66,7 @@ public class SceneButtonManager : MonoBehaviour
     public void GoToStormGameScene()
     {
         //7,8,9,10
-        SceneManager.LoadScene(7+MessageSender.GetLevelNum());
+        SceneManager.LoadScene(7+MessageSender.GetTheInstance().GetLevelNum());
     }
     public void GoToDiamondsGameScene()
     {
@@ -76,14 +76,7 @@ public class SceneButtonManager : MonoBehaviour
     {
         SceneManager.LoadScene(12);
     }
-
-
-
-
-
-
-
-
+    
 
 
     public void ExitTheGame()

@@ -9,14 +9,15 @@ public class BKMusicSlider : MonoBehaviour
 
     
     private Slider slider;
+
     private void Awake()
     {
         slider = GetComponent<Slider>();
-        slider.value = BKMusicPlayer.audioSourceOfBKMusic.volume;
+        slider.value = BKMusicPlayer.GetTheInstance().GetVolume();
     }
     public void SetBKMusicVolume()
     {
-        BKMusicPlayer.audioSourceOfBKMusic.volume = slider.value;
+        BKMusicPlayer.GetTheInstance().SetVolume(slider.value);
     }
     // Start is called before the first frame update
     void Start()

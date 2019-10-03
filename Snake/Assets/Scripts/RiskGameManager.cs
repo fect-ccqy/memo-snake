@@ -12,12 +12,13 @@ public class RiskGameManager : MonoBehaviour
 
     private int[] wallNum=new int[5];
     private GameObject[] wall = new GameObject[5];// checktype/settype分别为1,3,5,7,9
-                                                   // order                 0,1,2,3,4
-                                                   //itemtype               1,2,3,4,5
-
+                                                  // order                 0,1,2,3,4
+                                                  //itemtype               1,2,3,4,5
+    private int score = 0;
 
     //checktype均为1
     //itemtype 6,7,8,9,10,,,,,
+    //clipsNum 0,1,2,3,4,5,6
     private int foodNum;
     private int poisonNum;
     private int mushroomNum;
@@ -28,8 +29,9 @@ public class RiskGameManager : MonoBehaviour
 
 
 
-
-    private Transform snakeHeadTrans;
+    private static GameObject theSnake;
+    private static Snake thesnake;
+    private static Transform snakeHeadTrans;
 
     //
     private Quaternion rotHorizontal;//水平
@@ -38,8 +40,10 @@ public class RiskGameManager : MonoBehaviour
 
     private void Awake()
     {
-        snakeHeadTrans = GameObject.Find("Snake").transform;
-        print(snakeHeadTrans.position);
+        RiskGameManager.theSnake = GameObject.Find("Snake");
+        RiskGameManager.snakeHeadTrans = RiskGameManager.theSnake.transform;
+        RiskGameManager.thesnake = RiskGameManager.theSnake.GetComponent<Snake>();
+        print(RiskGameManager.snakeHeadTrans.position);
         SetStartMemberNum();
         LoadItems();
 
@@ -63,7 +67,7 @@ public class RiskGameManager : MonoBehaviour
             }
         }
 
-        if (MessageSender.GetDifficultyNum() == 0)
+        if (MessageSender.GetTheInstance().GetDifficultyNum() == 0)
         {
             wallNum[0] = 3;
             wallNum[1] = 3;
@@ -80,7 +84,7 @@ public class RiskGameManager : MonoBehaviour
             wisdomNum=1;
 
         }
-        else if (MessageSender.GetDifficultyNum() == 1)
+        else if (MessageSender.GetTheInstance().GetDifficultyNum() == 1)
         {
             wallNum[0] = 3;
             wallNum[1] = 6;
@@ -97,7 +101,7 @@ public class RiskGameManager : MonoBehaviour
             wisdomNum = 1;
 
         }
-        else if (MessageSender.GetDifficultyNum() == 2)
+        else if (MessageSender.GetTheInstance().GetDifficultyNum() == 2)
         {
             wallNum[0] = 3;
             wallNum[1] = 6;
@@ -295,6 +299,12 @@ public class RiskGameManager : MonoBehaviour
     }
 
 
+    public static void TriggerOneBodyFood()
+    {
+        thesnake.AddOneBody();
+    }
+
+    
     // Update is called once per frame
     void Update()
     {

@@ -62,22 +62,24 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\BKMusicPlayer.cs" />
-    <Compile Include="Assets\Scripts\BKMusicSlider.cs" />
-    <Compile Include="Assets\Scripts\ButtonSoundPlayer.cs" />
-    <Compile Include="Assets\Scripts\CameraFollower.cs" />
     <Compile Include="Assets\Scripts\ControllerAwaker.cs" />
-    <Compile Include="Assets\Scripts\DifficlultySetter.cs" />
-    <Compile Include="Assets\Scripts\GameModeSetter.cs" />
-    <Compile Include="Assets\Scripts\HelpInterfaceSetter.cs" />
-    <Compile Include="Assets\Scripts\LevelSetter.cs" />
-    <Compile Include="Assets\Scripts\MessageSender.cs" />
+    <Compile Include="Assets\Scripts\CrossScene\BKMusicPlayer.cs" />
+    <Compile Include="Assets\Scripts\CrossScene\ButtonSoundPlayer.cs" />
+    <Compile Include="Assets\Scripts\CrossScene\MessageSender.cs" />
+    <Compile Include="Assets\Scripts\ForInterface\BKMusicSlider.cs" />
+    <Compile Include="Assets\Scripts\ForInterface\DifficlultySetter.cs" />
+    <Compile Include="Assets\Scripts\ForInterface\GameModeSetter.cs" />
+    <Compile Include="Assets\Scripts\ForInterface\HelpInterfaceSetter.cs" />
+    <Compile Include="Assets\Scripts\ForInterface\LevelSetter.cs" />
+    <Compile Include="Assets\Scripts\ForInterface\SceneButtonManager.cs" />
+    <Compile Include="Assets\Scripts\ForInterface\SkinSetter.cs" />
+    <Compile Include="Assets\Scripts\ForInterface\SoundSlider.cs" />
+    <Compile Include="Assets\Scripts\OneBodyFood.cs" />
+    <Compile Include="Assets\Scripts\RiskCameraFollower.cs" />
     <Compile Include="Assets\Scripts\RiskGameManager.cs" />
-    <Compile Include="Assets\Scripts\SceneButtonManager.cs" />
-    <Compile Include="Assets\Scripts\SkinSetter.cs" />
     <Compile Include="Assets\Scripts\Snake.cs" />
     <Compile Include="Assets\Scripts\SnakeBody.cs" />
-    <Compile Include="Assets\Scripts\SoundSlider.cs" />
+    <Compile Include="Assets\Scripts\SoundPlayer.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>D:/unity 2018/Snake/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
