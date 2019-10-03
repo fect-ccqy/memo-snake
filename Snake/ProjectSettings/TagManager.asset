@@ -3,7 +3,15 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - SnakeHead
+  - New tag
+  - New tag (1)
+  - New tag (2)
+  - New tag (3)
+  - New tag (4)
+  - DeathWall
+  - Wall
   layers:
   - Default
   - TransparentFX

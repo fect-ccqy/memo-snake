@@ -14,7 +14,7 @@ public class Snake : MonoBehaviour
    
 
 
-    public static float snakeSpeed = 35f;
+    public static float snakeSpeed = 20f;
     private static GameObject snakeHeadObj;
     private static GameObject snakeTailObj;
     private static SnakeBody snakeTail;
@@ -46,6 +46,7 @@ public class Snake : MonoBehaviour
     private Sprite snakeDizzyHeadSpr;
     private Sprite snakeBodySpr;
 
+    private Rigidbody2D thisRigidbody2d;
 
 
     private static GameObject snakeBodyObj;
@@ -168,6 +169,7 @@ public class Snake : MonoBehaviour
         Snake.snakeBodySpriteRenderer.sortingOrder++;
     }
 
+
     private void DoubleSnakeBody()
     {
         int addNum = Snake.snakeLength;
@@ -179,10 +181,29 @@ public class Snake : MonoBehaviour
 
     }
 
+
     private void HalfSnakeBody()
     {
         int minusNum = Snake.snakeLength/2;
         for (int i = 0; i < minusNum; i++)
+        {
+            MinusOneBody();
+        }
+    }
+
+
+    private void AddNBody(int addN)
+    {
+        for (int i = 0; i < addN; i++)
+        {
+            AddOneBody();
+        }
+    }
+
+
+    private void MinusNBody(int minusN)
+    {
+        for (int i = 0; i < minusN; i++)
         {
             MinusOneBody();
         }
@@ -206,12 +227,14 @@ public class Snake : MonoBehaviour
         }
     }
 
+
     //***************************************************************************
 
 
 
     private void Awake()
     {
+        thisRigidbody2d = GetComponent<Rigidbody2D>();
 
         SetStartHistoryArray();
         LoadSkinSprite();
@@ -224,6 +247,7 @@ public class Snake : MonoBehaviour
 
 
     }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -236,24 +260,9 @@ public class Snake : MonoBehaviour
 
 
 
+        
 
-        //方向确定采用混合的形式，在保证方向刷新率的情况下避免抖动  
-        //有两种方向确定方式   1 蛇头朝向鼠标运动     2  鼠标相对屏幕中心的矢量作为蛇头前进的方向
-        //方法1   因为相机跟随有缓冲，若只选择蛇头朝向鼠标会出现抖动，影响游戏体验
-        //方法2   使用体验怪怪的╮(╯﹏╰）╭
-        //所以就把两种混一起了。。。┐(´∇｀)┌
-        //这种情况下如果还出现抖动应该就是数值的事了(～￣▽￣)～ 
-
-
-        dHeadTowards = Input.mousePosition - midScreenPos;//获得鼠标相对屏幕中心的位移矢量
-
-        //若矢量长度(的平方)大于某个值(即鼠标距离屏幕中心足够远，大于相机跟随缓冲的最大距离)，则选择蛇头朝向鼠标运动方式
-        if (dHeadTowards.sqrMagnitude > 1350f)
-        {
-            dHeadTowards = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
-        }
-        transform.up = dHeadTowards;
-
+        
 
         
     }
@@ -261,11 +270,29 @@ public class Snake : MonoBehaviour
     private void FixedUpdate()
     {
 
+      
+       
+
+        //蛇头相对鼠标的位移矢量(世界坐标)
+        dHeadTowards = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+
+
+        //蛇头相对鼠标的位移矢量的模长平方小于1.6则不进行方向和位置的变化避免出现抖动
+        if (dHeadTowards.sqrMagnitude > 1.6f)
+        {
+            //dHeadTowards = Input.mousePosition - midScreenPos;//获得鼠标相对屏幕中心的位移矢量  即方法2的处理方式
+            transform.up = dHeadTowards;
+            thisRigidbody2d.velocity = transform.up * Snake.snakeSpeed;
+        }
+
+       
+
         //********
         //if(!Input.anyKey)
 
         //movement
-        transform.position += transform.up * snakeSpeed * Time.fixedDeltaTime;
+
+        //transform.position += transform.up * snakeSpeed * Time.fixedDeltaTime;
 
 
         //test
@@ -275,5 +302,12 @@ public class Snake : MonoBehaviour
         SetHistoryArray();
        
     }
+    private void OnCollisionExit2D(Collision2D collision)
+    {
 
+        //避免出现在离开物体时，蛇头相对鼠标的位移矢量的模长平方小于1.6，速度依然保持与物体接触时相同的bug
+        dHeadTowards = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+        transform.up = dHeadTowards;
+        thisRigidbody2d.velocity = transform.up * Snake.snakeSpeed;
+    }
 }
