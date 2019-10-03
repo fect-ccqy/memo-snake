@@ -41,3 +41,30 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: New Layer
+    uniqueID: 3163987551
+    locked: 0
+  - name: New Layer
+    uniqueID: 283121663
+    locked: 0
+  - name: New Layer
+    uniqueID: 1686490069
+    locked: 0
+  - name: New Layer
+    uniqueID: 1057566421
+    locked: 0
+  - name: SnakeBody
+    uniqueID: 3718624723
+    locked: 0
+  - name: New Layer
+    uniqueID: 3380635785
+    locked: 0
+  - name: SnakeHead
+    uniqueID: 1829973483
+    locked: 0
+  - name: New Layer
+    uniqueID: 307057401
+    locked: 0
+  - name: New Layer
+    uniqueID: 2131068123
+    locked: 0

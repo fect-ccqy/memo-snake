@@ -11,12 +11,18 @@ public class MessageSender : MonoBehaviour
 
     public static bool whetherExist=false;
     public static GameObject theExistentMessageSender;
-    public static float soundVolume=1f;//存储音效的音量
+    public static float soundVolume=0.6f;//存储音效的音量
 
     private static int gameModeNum=0;//0 Risk   1 storm    2 diamonds  3 color
     private static int skinNum=0;//0 浅蓝绿色   1  浅橙色   2  浅蓝色   3 暗绿色
     private static int levelNum=0;//0  第一关   1 第二关  2 第三关  3 第四关
     private static int difficultyNum=0;//0 简单    1 普通    2 困难
+
+
+
+    //for test
+    //private float timers=0;
+    //private int timess = 0;
 
     private void Awake()
     {
@@ -78,5 +84,19 @@ public class MessageSender : MonoBehaviour
         return MessageSender.difficultyNum;
     }
 
+    /*
 
+    private void FixedUpdate()
+    {
+        timers += Time.fixedDeltaTime;
+        timess++;
+        if (timers >= 1f)
+        {
+            print(timess);
+            timers = 0;
+            timess = 0;
+        }
+
+    }
+    */
 }

@@ -65,6 +65,7 @@
     <Compile Include="Assets\Scripts\BKMusicPlayer.cs" />
     <Compile Include="Assets\Scripts\BKMusicSlider.cs" />
     <Compile Include="Assets\Scripts\ButtonSoundPlayer.cs" />
+    <Compile Include="Assets\Scripts\CameraFollower.cs" />
     <Compile Include="Assets\Scripts\ControllerAwaker.cs" />
     <Compile Include="Assets\Scripts\DifficlultySetter.cs" />
     <Compile Include="Assets\Scripts\GameModeSetter.cs" />
@@ -73,39 +74,41 @@
     <Compile Include="Assets\Scripts\MessageSender.cs" />
     <Compile Include="Assets\Scripts\SceneButtonManager.cs" />
     <Compile Include="Assets\Scripts\SkinSetter.cs" />
+    <Compile Include="Assets\Scripts\Snake.cs" />
+    <Compile Include="Assets\Scripts\SnakeBody.cs" />
     <Compile Include="Assets\Scripts\SoundSlider.cs" />
     <Reference Include="Unity.Timeline.Editor">
-      <HintPath>D:/unity 2018/Snake/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+      <HintPath>E:/UnityProjects/Snake/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VSCode.Editor">
-      <HintPath>D:/unity 2018/Snake/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
+      <HintPath>E:/UnityProjects/Snake/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>D:/unity 2018/Snake/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>E:/UnityProjects/Snake/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>D:/unity 2018/Snake/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+      <HintPath>E:/UnityProjects/Snake/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline">
-      <HintPath>D:/unity 2018/Snake/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+      <HintPath>E:/UnityProjects/Snake/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
     </Reference>
     <Reference Include="Unity.CollabProxy.Editor">
-      <HintPath>D:/unity 2018/Snake/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+      <HintPath>E:/UnityProjects/Snake/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Rider.Editor">
-      <HintPath>D:/unity 2018/Snake/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+      <HintPath>E:/UnityProjects/Snake/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Sprite.Editor">
-      <HintPath>D:/unity 2018/Snake/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
+      <HintPath>E:/UnityProjects/Snake/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Tilemap.Editor">
-      <HintPath>D:/unity 2018/Snake/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll</HintPath>
+      <HintPath>E:/UnityProjects/Snake/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>D:/unity 2018/Snake/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>E:/UnityProjects/Snake/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
-      <HintPath>D:/unity 2018/Snake/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+      <HintPath>E:/UnityProjects/Snake/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.2.6f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
