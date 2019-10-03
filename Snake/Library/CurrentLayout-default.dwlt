@@ -44,10 +44,10 @@ MonoBehaviour:
     y: 30
     width: 1536
     height: 731
-  m_MinSize: {x: 683, y: 494}
-  m_MaxSize: {x: 14004, y: 14044}
+  m_MinSize: {x: 683, y: 344}
+  m_MaxSize: {x: 12008, y: 8044}
   vertical: 0
-  controlID: 56
+  controlID: 33
 --- !u!114 &3
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -93,8 +93,8 @@ MonoBehaviour:
     y: 0
     width: 202
     height: 459
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 202, y: 222}
+  m_MaxSize: {x: 4002, y: 4022}
   m_ActualView: {fileID: 16}
   m_Panes:
   - {fileID: 16}
@@ -119,15 +119,15 @@ MonoBehaviour:
     y: 459
     width: 1254
     height: 272
-  m_MinSize: {x: 232, y: 272}
-  m_MaxSize: {x: 10002, y: 10022}
-  m_ActualView: {fileID: 14}
+  m_MinSize: {x: 102, y: 122}
+  m_MaxSize: {x: 4002, y: 4022}
+  m_ActualView: {fileID: 19}
   m_Panes:
   - {fileID: 14}
   - {fileID: 19}
   - {fileID: 12}
-  m_Selected: 0
-  m_LastSelected: 1
+  m_Selected: 1
+  m_LastSelected: 0
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -216,10 +216,10 @@ MonoBehaviour:
     y: 0
     width: 1254
     height: 731
-  m_MinSize: {x: 406, y: 494}
-  m_MaxSize: {x: 10002, y: 14044}
+  m_MinSize: {x: 406, y: 344}
+  m_MaxSize: {x: 8006, y: 8044}
   vertical: 1
-  controlID: 57
+  controlID: 34
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -244,7 +244,7 @@ MonoBehaviour:
   m_MinSize: {x: 406, y: 222}
   m_MaxSize: {x: 8006, y: 4022}
   vertical: 0
-  controlID: 58
+  controlID: 35
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -381,20 +381,20 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scenes
+    - Assets/Scenes/GameScene/a_Risk
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scenes
+  - Assets/Scenes/GameScene/a_Risk
   m_LastFoldersGridSize: -1
   m_LastProjectPath: D:\unity 2018\Snake
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 223}
-    m_SelectedIDs: 122e0000
-    m_LastClickedID: 11794
-    m_ExpandedIDs: 000000005e2d0000682d00005c2f0000b22f0000dc2f00002e3000005630000098320000c83200001e34000000ca9a3b
+    scrollPos: {x: 0, y: 227}
+    m_SelectedIDs: 80300000
+    m_LastClickedID: 12416
+    m_ExpandedIDs: 00000000782d0000822d00002c2e0000782f0000ce2f0000f82f00004a30000072300000ba320000ea3200004234000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -422,7 +422,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000005e2d0000682d0000122e00005c2f0000b22f00002e3000005630000098320000c83200001e340000
+    m_ExpandedIDs: 00000000782d0000822d0000782f0000ce2f0000f82f00004a30000072300000ba320000ea32000042340000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -449,7 +449,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 0
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c6230000823400007c340000aa2b0000243400002c34000040340000bc2a0000c62a00006eab00008aab00003a2e0000262f0000f42b0000b42c0000142d0000f03d0000562d0000523e00004e3e0000423e00006c2a0000c43a0000bc3a0000c03a00002e9cf8ffc895f8ff0099f8fffeb5f7ffacb2f7ff74aff7ffc86effffd40cfbff1e3ff6ff6e42f6ffc83bf6ff5454efffc657efffd850efffa4e5ebff5ee2ebfff8deebff9083fbffd833c2ffba00c1ffee2a00009a89e4ffe266e1ff4881dfff0469dfff2a2a0000522a0000022c0000de2a0000bc4a0000004a0000b84a0000f04a0000f2490000c04900000a4a0000464c00005e4a00002a4a0000584900004c490000b04900003c4a000020490000782d0000c62f0000903100008c330000902f0000a2330000000000006e320000782f0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -547,18 +547,18 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 6afbffff
+      m_ExpandedIDs: eef0ffff30f2ffff56fbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: smallwall100
-        m_OriginalName: smallwall100
+        m_Name: diamonds1
+        m_OriginalName: diamonds1
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: -9766
+        m_UserData: 13656
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
         m_OriginalEventType: 0
@@ -607,9 +607,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -16.659454, y: 3.9386668, z: -252.20146}
+    m_Target: {x: -58.02293, y: 2.2332962, z: -558.4972}
     speed: 2
-    m_Value: {x: -16.659454, y: 3.9386668, z: -252.20146}
+    m_Value: {x: -58.02293, y: 2.2332962, z: -558.4972}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -642,9 +642,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 112.14341
+    m_Target: 139.23474
     speed: 2
-    m_Value: 112.14341
+    m_Value: 139.23474
   m_Ortho:
     m_Target: 1
     speed: 2
