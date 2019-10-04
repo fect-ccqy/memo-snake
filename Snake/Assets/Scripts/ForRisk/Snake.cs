@@ -461,6 +461,7 @@ public class Snake : MonoBehaviour
     {
         if (collision.transform.tag == "DeathWall")
         {
+            SoundPlayer.PlayItemsSound(7);
             whetherAlive = false;
             return;
         }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class RiskGameManager : MonoBehaviour
 {
@@ -13,32 +14,24 @@ public class RiskGameManager : MonoBehaviour
 
 
 
-    [SerializeField]private Text lenText,speedText,scoreText;
-
-    [SerializeField] private Text dieScoreText;
-    [SerializeField] private GameObject[] dieUIObj;
-    [SerializeField] private int dieUIObjNum;
+    //*********************************************************************************************************************************************
+    //关于生成地图相关的数据
 
     private int[,] gameMap = new int[120, 120];//默认为0 即没有东西在里面
-
-
-    //for test
-    public GameObject testObj;
-    private GameObject[,] gameobjMap = new GameObject[120, 120];
-
     private int sideLen = 43;
+    private static Transform snakeHeadTrans;//用于判断生成位置蛇头的距离
+    private static GameObject theSnake;
+    private Quaternion rotHorizontal;//水平(在awake中初始化)
+    private Quaternion rorVertical;//垂直
 
 
+    // checktype/settype分别为1,3,5,7,9   order: 0,1,2,3,4   itemtype: 1,2,3,4,5  在map上的存储数字
     private int[] wallNum = new int[5];
-    private GameObject[] wall = new GameObject[5];// checktype/settype分别为1,3,5,7,9
-                                                  // order                 0,1,2,3,4
-                                                  //itemtype               1,2,3,4,5  在map上的存储
-    private int score = 0;
-
-    //checktype/settype均为1   表示尺寸
+    private GameObject[] wall = new GameObject[5];
+    
+    //道具的checktype/settype均为1   表示尺寸
     //itemtype 6,7,8,9,10,,,,,在map上的存储
     //clipsNum 0,1,2,3,4,5,6  播放音频的下标
-
     private int foodNum;
     private int poisonNum;
     private int mushroomNum;
@@ -54,14 +47,34 @@ public class RiskGameManager : MonoBehaviour
     private GameObject energyPrefab;//10speeder
     private GameObject sheildPrefab;//11
 
-    private static GameObject theSnake;
-    // private static Snake thesnake;
-    private static Transform snakeHeadTrans;
+    
+    //*********************************************************************************************************************************************
+    //关于UI
 
-    //
-    private Quaternion rotHorizontal;//水平
-    private Quaternion rorVertical;//垂直
+    private int score = 0;
+    [SerializeField] private Text lenText, speedText, scoreText;
 
+    [SerializeField] private Text dieScoreText;
+    [SerializeField] private GameObject dieUIObj;
+
+    [SerializeField] private GameObject settingUiObj;
+    private int tDifficulty;//记录打开设置界面时的难度，如果改变了，就重新加载场景
+
+    
+    //*********************************************************************************************************************************************
+    //用于测试
+    public GameObject testObj;
+    private GameObject[,] gameobjMap = new GameObject[120, 120];
+
+
+
+
+
+
+
+
+    //*********************************************************************************************************************************************
+    //get set
 
     public static RiskGameManager GetTheInstance()
     {
@@ -69,41 +82,74 @@ public class RiskGameManager : MonoBehaviour
 
     }
 
+    //*********************************************************************************************************************************************
+    //一些辅助运算方法
 
-    private void Awake()
+    private Vector3 GetRandomPos()
     {
-        Time.timeScale = 1f;
-        //fortest
-        Vector3 tobjpos = new Vector3(0f, 0f, 0f);
-        for (int i = -50; i <= 50; i++)
+        Vector3 randomPos = new Vector3(Random.Range(-43, 44), Random.Range(-43, 44), 0);
+        return randomPos;
+    }
+
+    private bool CheckPos(Vector3 checkpos, int checkType, int layWay)
+    {
+        int checkHeadLen = 2 * checkType + (7 - checkType) / 2;
+        if ((checkpos - snakeHeadTrans.position).sqrMagnitude < checkHeadLen * checkHeadLen)
+            return false;
+
+
+
+        int dmidx = 60 + (int)checkpos.x;
+        int dmidy = 60 + (int)checkpos.y;
+        int checkLen = checkHeadLen - 3;
+        //横着放
+        if (layWay == 0)
         {
-            for (int j = -50; j <= 50; j++)
+            for (int i = 0; i <= 2; i++)
             {
-                tobjpos.x = i;
-                tobjpos.y = j;
-                gameobjMap[60 + i, 60 + j] = Instantiate(testObj, tobjpos, Quaternion.identity) as GameObject;
+                for (int j = 0; j <= checkLen; j++)
+                {
+                    if (!((gameMap[dmidx + j, dmidy + i] == 0) && (gameMap[dmidx + j, dmidy - i] == 0) && (gameMap[dmidx - j, dmidy + i] == 0) && (gameMap[dmidx - j, dmidy - i] == 0)))
+                    {
+                        return false;
+                    }
+                }
             }
         }
 
+        //竖着放
+        else
+        {
+            for (int i = 0; i <= 2; i++)
+            {
+                for (int j = 0; j <= checkLen; j++)
+                {
+                    if (!((gameMap[dmidx + i, dmidy + j] == 0) && (gameMap[dmidx + i, dmidy - j] == 0) && (gameMap[dmidx - i, dmidy + j] == 0) && (gameMap[dmidx - i, dmidy - j] == 0)))
+                    {
+                        return false;
+                    }
+                }
+            }
+        }
+        return true;
+    }
+
+    //*********************************************************************************************************************************************
+    //初始化数据
+    private void SetStartData()
+    {
 
 
-
-        RiskGameManager.theInstance = this;
         RiskGameManager.theSnake = GameObject.Find("Snake");
         RiskGameManager.snakeHeadTrans = RiskGameManager.theSnake.transform;
-        // RiskGameManager.thesnake = RiskGameManager.theSnake.GetComponent<Snake>();
-        print(RiskGameManager.snakeHeadTrans.position);
-        SetStartMemberNum();
-        LoadItems();
 
 
-        CreateItems();
-    }
-    private void SetStartMemberNum()
-    {
+        Time.timeScale = 1f;
         rotHorizontal = Quaternion.identity;
         rorVertical = Quaternion.identity;
         rorVertical.eulerAngles = new Vector3(0, 0, 90);
+
+
 
         for (int i = 0; i <= sideLen; i++)
         {
@@ -188,6 +234,7 @@ public class RiskGameManager : MonoBehaviour
 
     }
 
+    
     private void LoadItems()
     {
 
@@ -213,15 +260,8 @@ public class RiskGameManager : MonoBehaviour
     }
 
 
-
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-
-    }
+    //*********************************************************************************************************************************************
+    //关于生成物体
 
     private void CreateItems()
     {
@@ -270,6 +310,7 @@ public class RiskGameManager : MonoBehaviour
 
         }
     }
+
     private void CreateOneWall(int wallorder)
     {
         int settype = wallorder * 2 + 1;
@@ -303,6 +344,7 @@ public class RiskGameManager : MonoBehaviour
 
 
     }
+
     public void CreateOneFood()
     {
         int itemtype = 6;
@@ -325,6 +367,7 @@ public class RiskGameManager : MonoBehaviour
         Instantiate(foodPrefab, tPos, rotHorizontal);
         SetMapPos(tPos, settype, layMod, itemtype);
     }
+
     public void CreateOneGrass()
     {
         int itemtype = 7;
@@ -347,6 +390,7 @@ public class RiskGameManager : MonoBehaviour
         Instantiate(poisonGrassPrefab, tPos, rotHorizontal);
         SetMapPos(tPos, settype, layMod, itemtype);
     }
+
     public void CreateOneMushroom()
     {
         int itemtype = 8;
@@ -392,6 +436,7 @@ public class RiskGameManager : MonoBehaviour
         Instantiate(minePrefab, tPos, rotHorizontal);
         SetMapPos(tPos, settype, layMod, itemtype);
     }
+
     public void CreateOneEnergy()
     {
         int itemtype = 10;
@@ -414,6 +459,7 @@ public class RiskGameManager : MonoBehaviour
         Instantiate(energyPrefab, tPos, rotHorizontal);
         SetMapPos(tPos, settype, layMod, itemtype);
     }
+
     public void CreateOneSheild()
     {
         int itemtype = 11;
@@ -436,55 +482,8 @@ public class RiskGameManager : MonoBehaviour
         Instantiate(sheildPrefab, tPos, rotHorizontal);
         SetMapPos(tPos, settype, layMod, itemtype);
     }
-    private Vector3 GetRandomPos()
-    {
-        Vector3 randomPos = new Vector3(Random.Range(-43, 44), Random.Range(-43, 44), 0);
-        return randomPos;
-    }
 
-    private bool CheckPos(Vector3 checkpos, int checkType, int layWay)
-    {
-        int checkHeadLen = 2 * checkType + (7 - checkType) / 2;
-        if ((checkpos - snakeHeadTrans.position).sqrMagnitude < checkHeadLen * checkHeadLen)
-            return false;
-
-
-
-        int dmidx = 60 + (int)checkpos.x;
-        int dmidy = 60 + (int)checkpos.y;
-        int checkLen = checkHeadLen - 3;
-        //横着放
-        if (layWay == 0)
-        {
-            for (int i = 0; i <= 2; i++)
-            {
-                for (int j = 0; j <= checkLen; j++)
-                {
-                    if (!((gameMap[dmidx + j, dmidy + i] == 0) && (gameMap[dmidx + j, dmidy - i] == 0) && (gameMap[dmidx - j, dmidy + i] == 0) && (gameMap[dmidx - j, dmidy - i] == 0)))
-                    {
-                        return false;
-                    }
-                }
-            }
-        }
-
-        //竖着放
-        else
-        {
-            for (int i = 0; i <= 2; i++)
-            {
-                for (int j = 0; j <= checkLen; j++)
-                {
-                    if (!((gameMap[dmidx + i, dmidy + j] == 0) && (gameMap[dmidx + i, dmidy - j] == 0) && (gameMap[dmidx - i, dmidy + j] == 0) && (gameMap[dmidx - i, dmidy - j] == 0)))
-                    {
-                        return false;
-                    }
-                }
-            }
-        }
-        return true;
-    }
-
+    //生成物体后对数据的操作
     private void SetMapPos(Vector3 setpos, int setType, int layWay, int itemtype)
     {
         int checkHeadLen = 2 * setType + (7 - setType) / 2;
@@ -534,21 +533,9 @@ public class RiskGameManager : MonoBehaviour
     {
         SetMapPos(setpos, 1, 0, 0);
     }
-    // Update is called once per frame
-    void Update()
-    {
-        //fortest
-        Vector3 tobjpos = new Vector3(0f, 0f, 0f);
-        for (int i = -50; i <= 50; i++)
-        {
-            for (int j = -50; j <= 50; j++)
-            {
-                tobjpos.x = i;
-                tobjpos.y = j;
-                gameobjMap[60 + i, 60 + j].SetActive(gameMap[60 + i, 60 + j] != 0);
-            }
-        }
-    }
+
+    //*********************************************************************************************************************************************
+    //关于UI
 
     public void SetScore(int settype)
     {
@@ -572,7 +559,6 @@ public class RiskGameManager : MonoBehaviour
         SetScoreText();
     }
 
-
     public void SetLenText(int len)
     {
         lenText.text = len.ToString();
@@ -585,15 +571,93 @@ public class RiskGameManager : MonoBehaviour
     {
         scoreText.text = score.ToString();
     }
+
+
     public void TheSnakDie()
     {
         Time.timeScale = 0;
         dieScoreText.text = score.ToString();
-        for(int i = 0; i < dieUIObjNum; i++)
+        dieUIObj.SetActive(true);
+    }
+    public void OpenSettingInterface()
+    {
+        if (!dieUIObj.activeSelf)
         {
-            dieUIObj[i].SetActive(true);
+            tDifficulty = MessageSender.GetTheInstance().GetDifficultyNum();
+            Time.timeScale = 0f;
+            settingUiObj.SetActive(true);
+        }
+    }
+    public void CloseSettingface()
+    {
+        if (tDifficulty == MessageSender.GetTheInstance().GetDifficultyNum())
+        {
+            Time.timeScale = 1f;
+            settingUiObj.SetActive(false);
+        }
+        else
+        {
+            SceneManager.LoadScene(6);
         }
     }
 
+
+
+
+    //*********************************************************************************************************************************************
+    //生命周期
+
+
+    private void Awake()
+    {
+        //用于测试
+        Vector3 tobjpos = new Vector3(0f, 0f, 0f);
+        for (int i = -50; i <= 50; i++)
+        {
+            for (int j = -50; j <= 50; j++)
+            {
+                tobjpos.x = i;
+                tobjpos.y = j;
+                gameobjMap[60 + i, 60 + j] = Instantiate(testObj, tobjpos, Quaternion.identity) as GameObject;
+            }
+        }
+
+    
+        RiskGameManager.theInstance = this;
+
+        SetStartData();
+       
+        LoadItems();
+
+        CreateItems();
+    }
+   
+
+
+    // Start is called before the first frame update
+    void Start()
+    {
+
+
+    }
+
+
+    // Update is called once per frame
+    void Update()
+    {
+        //用于测试
+        Vector3 tobjpos = new Vector3(0f, 0f, 0f);
+        for (int i = -50; i <= 50; i++)
+        {
+            for (int j = -50; j <= 50; j++)
+            {
+                tobjpos.x = i;
+                tobjpos.y = j;
+                gameobjMap[60 + i, 60 + j].SetActive(gameMap[60 + i, 60 + j] != 0);
+            }
+        }
+    }
+
+    
 }
 
