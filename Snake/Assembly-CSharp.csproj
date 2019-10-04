@@ -74,7 +74,12 @@
     <Compile Include="Assets\Scripts\ForInterface\SceneButtonManager.cs" />
     <Compile Include="Assets\Scripts\ForInterface\SkinSetter.cs" />
     <Compile Include="Assets\Scripts\ForInterface\SoundSlider.cs" />
-    <Compile Include="Assets\Scripts\OneBodyFood.cs" />
+    <Compile Include="Assets\Scripts\Items\MineBoom.cs" />
+    <Compile Include="Assets\Scripts\Items\Mushroom.cs" />
+    <Compile Include="Assets\Scripts\Items\OneBodyFood.cs" />
+    <Compile Include="Assets\Scripts\Items\PoisonGrass.cs" />
+    <Compile Include="Assets\Scripts\Items\Sheild.cs" />
+    <Compile Include="Assets\Scripts\Items\SpeedEnergy.cs" />
     <Compile Include="Assets\Scripts\RiskCameraFollower.cs" />
     <Compile Include="Assets\Scripts\RiskGameManager.cs" />
     <Compile Include="Assets\Scripts\Snake.cs" />

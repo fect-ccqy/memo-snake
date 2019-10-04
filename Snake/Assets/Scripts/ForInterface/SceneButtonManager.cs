@@ -23,6 +23,11 @@ public class SceneButtonManager : MonoBehaviour
         
     }
 
+    public void SetTimeScaleBack()
+    {
+        Time.timeScale = 1f;
+    }
+
     public void PlayClickButtonSound()
     {
         ButtonSoundPlayer.GetTheInstance().PlayButtonSound();

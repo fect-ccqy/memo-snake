@@ -18,7 +18,9 @@ public class OneBodyFood : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        RiskGameManager.TriggerOneBodyFood();
+        Snake.GetTheInstance().GetOneFood();
+        RiskGameManager.GetTheInstance().SetMapPosZero(transform.position);
+        RiskGameManager.GetTheInstance().CreateOneFood();
         Destroy(this.gameObject);
     }
 }

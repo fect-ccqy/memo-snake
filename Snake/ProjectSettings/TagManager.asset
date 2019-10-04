@@ -73,6 +73,12 @@ TagManager:
   - name: New Layer
     uniqueID: 307057401
     locked: 0
-  - name: New Layer
+  - name: UI
     uniqueID: 2131068123
+    locked: 0
+  - name: New Layer
+    uniqueID: 140311429
+    locked: 0
+  - name: New Layer
+    uniqueID: 279316475
     locked: 0

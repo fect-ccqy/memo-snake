@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8431424381835989417}
   m_Layer: 0
   m_Name: smallwall700
-  m_TagString: Untagged
+  m_TagString: DeathWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
