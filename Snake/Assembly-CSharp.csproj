@@ -85,6 +85,7 @@
     <Compile Include="Assets\Scripts\ForRisk\SnakeBody.cs" />
     <Compile Include="Assets\Scripts\ForStorm\ExitObj.cs" />
     <Compile Include="Assets\Scripts\ForStorm\KeyCla.cs" />
+    <Compile Include="Assets\Scripts\ForStorm\MonsterMover.cs" />
     <Compile Include="Assets\Scripts\ForStorm\MoveThorn.cs" />
     <Compile Include="Assets\Scripts\ForStorm\StormFood.cs" />
     <Compile Include="Assets\Scripts\ForStorm\StormGameManager.cs" />

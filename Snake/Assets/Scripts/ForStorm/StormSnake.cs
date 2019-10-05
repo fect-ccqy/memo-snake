@@ -319,7 +319,10 @@ public class StormSnake : MonoBehaviour
 
             MinusOneBody();
 
-            print("烫烫烫烫烫烫");
+        }
+        if (collision.transform.tag == "monster")
+        {
+            whetherAlive = false;
         }
     }
 }

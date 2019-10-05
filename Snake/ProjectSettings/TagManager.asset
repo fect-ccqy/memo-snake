@@ -13,6 +13,7 @@ TagManager:
   - DeathWall
   - Wall
   - Hurtful
+  - monster
   layers:
   - Default
   - TransparentFX
