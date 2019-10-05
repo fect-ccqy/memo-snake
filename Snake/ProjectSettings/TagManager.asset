@@ -12,6 +12,7 @@ TagManager:
   - New tag (4)
   - DeathWall
   - Wall
+  - Hurtful
   layers:
   - Default
   - TransparentFX
@@ -25,18 +26,18 @@ TagManager:
   - 
   - 
   - 
+  - SnakeHead
+  - 
+  - wall
+  - 
+  - SnakeBody
+  - 
+  - 
+  - Hurtful
   - 
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - ThronMover
   - 
   - 
   - 

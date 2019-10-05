@@ -80,10 +80,19 @@
     <Compile Include="Assets\Scripts\ForRisk\Items\PoisonGrass.cs" />
     <Compile Include="Assets\Scripts\ForRisk\Items\Sheild.cs" />
     <Compile Include="Assets\Scripts\ForRisk\Items\SpeedEnergy.cs" />
-    <Compile Include="Assets\Scripts\ForRisk\RiskCameraFollower.cs" />
     <Compile Include="Assets\Scripts\ForRisk\RiskGameManager.cs" />
     <Compile Include="Assets\Scripts\ForRisk\Snake.cs" />
     <Compile Include="Assets\Scripts\ForRisk\SnakeBody.cs" />
+    <Compile Include="Assets\Scripts\ForStorm\ExitObj.cs" />
+    <Compile Include="Assets\Scripts\ForStorm\KeyCla.cs" />
+    <Compile Include="Assets\Scripts\ForStorm\MoveThorn.cs" />
+    <Compile Include="Assets\Scripts\ForStorm\StormFood.cs" />
+    <Compile Include="Assets\Scripts\ForStorm\StormGameManager.cs" />
+    <Compile Include="Assets\Scripts\ForStorm\StormSnake.cs" />
+    <Compile Include="Assets\Scripts\ForStorm\StormSnakeBody.cs" />
+    <Compile Include="Assets\Scripts\ForStorm\ThornMover.cs" />
+    <Compile Include="Assets\Scripts\ForStorm\ThronShooter.cs" />
+    <Compile Include="Assets\Scripts\RiskStormCameraFollower.cs" />
     <Compile Include="Assets\Scripts\SoundPlayer.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>D:/unity 2018/Snake/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>

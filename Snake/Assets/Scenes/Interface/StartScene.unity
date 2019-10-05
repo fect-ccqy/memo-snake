@@ -289,12 +289,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a546d2893c150434c83f282287283736, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  messageSender: {fileID: 695990483718530148, guid: 982ad8f5f3115fe409076a8e35e88dc8,
-    type: 3}
-  bKMusicController: {fileID: 1809300057254872950, guid: 1011674a2c958df4b999593648d2eb86,
-    type: 3}
-  buttonSoundController: {fileID: 8778413408248303724, guid: 816a1fd123991cc43b98c4c819884ae5,
-    type: 3}
 --- !u!4 &640425120
 Transform:
   m_ObjectHideFlags: 0

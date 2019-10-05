@@ -238,19 +238,19 @@ public class RiskGameManager : MonoBehaviour
     private void LoadItems()
     {
 
-        wall[0] = Resources.Load<GameObject>("Prefabs/smallwall100");
-        wall[1] = Resources.Load<GameObject>("Prefabs/smallwall300");
-        wall[2] = Resources.Load<GameObject>("Prefabs/smallwall500");
-        wall[3] = Resources.Load<GameObject>("Prefabs/smallwall700");
-        wall[4] = Resources.Load<GameObject>("Prefabs/smallwall900");
+        wall[0] = Resources.Load<GameObject>("Prefabs/RiskPre/smallwall100");
+        wall[1] = Resources.Load<GameObject>("Prefabs/RiskPre/smallwall300");
+        wall[2] = Resources.Load<GameObject>("Prefabs/RiskPre/smallwall500");
+        wall[3] = Resources.Load<GameObject>("Prefabs/RiskPre/smallwall700");
+        wall[4] = Resources.Load<GameObject>("Prefabs/RiskPre/smallwall900");
 
 
-        foodPrefab = Resources.Load<GameObject>("Prefabs/OneFood");
-        poisonGrassPrefab = Resources.Load<GameObject>("Prefabs/PoisonousGrass");
-        mushroomPrefab = Resources.Load<GameObject>("Prefabs/Mushroom");
-        minePrefab = Resources.Load<GameObject>("Prefabs/Boom");
-        energyPrefab = Resources.Load<GameObject>("Prefabs/Energy");
-        sheildPrefab = Resources.Load<GameObject>("Prefabs/Sheild");
+        foodPrefab = Resources.Load<GameObject>("Prefabs/RiskPre/OneFood");
+        poisonGrassPrefab = Resources.Load<GameObject>("Prefabs/RiskPre/PoisonousGrass");
+        mushroomPrefab = Resources.Load<GameObject>("Prefabs/RiskPre/Mushroom");
+        minePrefab = Resources.Load<GameObject>("Prefabs/RiskPre/Boom");
+        energyPrefab = Resources.Load<GameObject>("Prefabs/RiskPre/Energy");
+        sheildPrefab = Resources.Load<GameObject>("Prefabs/RiskPre/Sheild");
         /*
         ;
         minePrefab;
@@ -610,6 +610,7 @@ public class RiskGameManager : MonoBehaviour
 
     private void Awake()
     {
+
         //用于测试
         Vector3 tobjpos = new Vector3(0f, 0f, 0f);
         for (int i = -50; i <= 50; i++)
@@ -630,6 +631,8 @@ public class RiskGameManager : MonoBehaviour
         LoadItems();
 
         CreateItems();
+
+        SetScoreText();
     }
    
 

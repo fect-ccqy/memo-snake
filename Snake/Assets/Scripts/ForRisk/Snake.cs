@@ -129,7 +129,7 @@ public class Snake : MonoBehaviour
 
     private void SetPrefabSnakeHeadAndBody()
     {
-        snakeBodyObj = Resources.Load<GameObject>("Prefabs/SnakeBody");
+        snakeBodyObj = Resources.Load<GameObject>("Prefabs/RiskPre/SnakeBody");
         snakeBodySpriteRenderer = snakeBodyObj.GetComponent<SpriteRenderer>();
         snakeBodySpriteRenderer.sprite = snakeBodySpr;
 
@@ -285,7 +285,8 @@ public class Snake : MonoBehaviour
 
         SetStartHeadAndTail();
 
-
+        RiskGameManager.GetTheInstance().SetLenText(snakeLength);
+        RiskGameManager.GetTheInstance().SetSpeedText((int)(snakeSpeed));
     }
 
     // Start is called before the first frame update
