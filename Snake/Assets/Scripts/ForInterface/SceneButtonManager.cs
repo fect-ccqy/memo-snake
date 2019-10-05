@@ -30,7 +30,7 @@ public class SceneButtonManager : MonoBehaviour
 
     public void PlayClickButtonSound()
     {
- //       ButtonSoundPlayer.GetTheInstance().PlayButtonSound();
+        ButtonSoundPlayer.GetTheInstance().PlayButtonSound();
     }
 
 

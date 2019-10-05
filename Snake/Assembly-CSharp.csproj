@@ -66,6 +66,14 @@
     <Compile Include="Assets\Scripts\CrossScene\BKMusicPlayer.cs" />
     <Compile Include="Assets\Scripts\CrossScene\ButtonSoundPlayer.cs" />
     <Compile Include="Assets\Scripts\CrossScene\MessageSender.cs" />
+    <Compile Include="Assets\Scripts\ForDiamond\CreateMapTrigger.cs" />
+    <Compile Include="Assets\Scripts\ForDiamond\DiamondColorCameraFollower.cs" />
+    <Compile Include="Assets\Scripts\ForDiamond\DiamondFood.cs" />
+    <Compile Include="Assets\Scripts\ForDiamond\DiamondGameManager.cs" />
+    <Compile Include="Assets\Scripts\ForDiamond\DiamondMapCreater.cs" />
+    <Compile Include="Assets\Scripts\ForDiamond\DiamondMinus.cs" />
+    <Compile Include="Assets\Scripts\ForDiamond\DiamondSnake.cs" />
+    <Compile Include="Assets\Scripts\ForDiamond\DiamondSnakeBody.cs" />
     <Compile Include="Assets\Scripts\ForInterface\BKMusicSlider.cs" />
     <Compile Include="Assets\Scripts\ForInterface\DifficlultySetter.cs" />
     <Compile Include="Assets\Scripts\ForInterface\GameModeSetter.cs" />

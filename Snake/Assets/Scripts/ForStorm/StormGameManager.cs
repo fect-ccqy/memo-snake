@@ -87,7 +87,6 @@ public class StormGameManager : MonoBehaviour
     {
         if ((!dieUIObj.activeSelf)&&(!winUiObj.activeSelf))
         {
-            tDifficulty = MessageSender.GetTheInstance().GetDifficultyNum();
             Time.timeScale = 0f;
             settingUiObj.SetActive(true);
         }
