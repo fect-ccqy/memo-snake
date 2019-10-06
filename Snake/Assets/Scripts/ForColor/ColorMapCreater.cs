@@ -10,7 +10,10 @@ public class ColorMapCreater : MonoBehaviour
 
     [SerializeField] private GameObject[] partMaps;
 
-    [SerializeField] private GameObject lastMap, nowMap, nextMap;
+    [SerializeField] private GameObject lastMap;
+    private GameObject nowMap, nextMap;
+    private int nmapNum=0;
+    private int tnum;
 
     public static ColorMapCreater GetTheInstance()
     {
@@ -19,28 +22,37 @@ public class ColorMapCreater : MonoBehaviour
 
     public void CreateNewMap()
     {
+        GetRandomNum();
         Destroy(lastMap);
         lastMap = nowMap;
         nowMap = nextMap;
-        nextMap = Instantiate(partMaps[Random.Range(0,partMaps.Length)], tPos, transform.rotation);
+        nextMap = Instantiate(partMaps[tnum], tPos, transform.rotation);
         tPos.x += 200f;
     }
+    private void GetRandomNum()
+    {
+        tnum = Random.Range(0, partMaps.Length);
+        while (tnum==nmapNum)
+        {
 
+            tnum = Random.Range(0, partMaps.Length);
+
+        }
+        
+    }
     private void Awake()
     {
-        tPos = new Vector3(600, 0, 0);
+        tPos = new Vector3(200, 0, 0);
         theInstance = this;
-    }
 
-    // Start is called before the first frame update
-    void Start()
-    {
+        GetRandomNum();
+        nowMap = Instantiate(partMaps[tnum], tPos, transform.rotation);
+        tPos.x += 200f;
 
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
+        GetRandomNum();
+        nextMap = Instantiate(partMaps[tnum], tPos, transform.rotation);
+        tPos.x += 200f;
 
     }
+    
 }

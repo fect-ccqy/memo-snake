@@ -30,20 +30,7 @@ public class LineMove : MonoBehaviour
         blockTransforms[num2].position = tPos;
 
     }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
-
+    
     private void FixedUpdate()
     {
         float tsin = Mathf.Sin(timer);

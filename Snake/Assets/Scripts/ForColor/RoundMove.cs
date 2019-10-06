@@ -28,11 +28,7 @@ public class RoundMove : MonoBehaviour
         blockTransforms[num2].position = tPos;
 
     }
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
     private void FixedUpdate()
     {
         transform.Rotate(0, 0, rotSpeed * Time.fixedDeltaTime);

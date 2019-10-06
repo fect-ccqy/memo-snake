@@ -7,7 +7,8 @@ public class DiamondMinus : MonoBehaviour
 {
     private int minusNum;
     [SerializeField] private Text numText;
-
+    private Vector3 tdPos;
+    private float xyOffset=4.5f;
 
     private void Awake()
     {
@@ -15,27 +16,19 @@ public class DiamondMinus : MonoBehaviour
         numText.text = minusNum.ToString();
     }
 
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
+    
     // Update is called once per frame
     void Update()
     {
-
-    }
-
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.transform.tag == "SnakeHead")
+        tdPos = transform.position - DiamondSnake.GetTheInstance().transform.position;
+        if ((-xyOffset < tdPos.x) && (tdPos.x < xyOffset) && (-xyOffset < tdPos.y) && (tdPos.y < xyOffset) && (tdPos.sqrMagnitude < 29.7f))
         {
 
             DiamondSnake.GetTheInstance().MinusNBody(minusNum);
             Destroy(this.gameObject);
         }
+
+
     }
+
 }

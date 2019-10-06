@@ -33,16 +33,5 @@ public class DiamondMapCreater : MonoBehaviour
         tPos = new Vector3(225, 0, 0);
         theInstance = this;
     }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 }

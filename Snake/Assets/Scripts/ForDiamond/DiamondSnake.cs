@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class DiamondSnake : MonoBehaviour
 {
+    //该脚本启动顺序应在diamongamemanager后面
+
+
     private static DiamondSnake theInstance;
     private static int oneStepNum = 1;
     private static int arrayLength = 6;
@@ -19,9 +22,9 @@ public class DiamondSnake : MonoBehaviour
 
 
     private int snakeLength;//不包括蛇头
-    private Rigidbody2D thisRigidbody2d;
     private Vector2 dHeadTowards;
     private Vector3 midScreenPos = new Vector3(Screen.width / 2, Screen.height / 2, 0f);
+
     //会频繁使用的临时变量
     private GameObject tSnakeBodyObj;
     private DiamondSnakeBody tSnakeBody;
@@ -57,11 +60,7 @@ public class DiamondSnake : MonoBehaviour
     //头尾以及下一个体节
     private GameObject nextSnakeBodyObj;
     private DiamondSnakeBody nextSnakeBody;
-
-    private GameObject snakeHeadObj;
-    private GameObject snakeTailObj;
     private DiamondSnakeBody snakeTail;
-    private Transform snakeTailTrans;
 
 
 
@@ -112,11 +111,11 @@ public class DiamondSnake : MonoBehaviour
     //加载皮肤的sprite
     private void LoadSkinSprite()
     {
-        print("StartloadSkinSprite SkinNum=" + MessageSender.GetTheInstance().GetSkinNum());
+        //print("StartloadSkinSprite SkinNum=" + MessageSender.GetTheInstance().GetSkinNum());
         snakeHeadSpr = Resources.Load<Sprite>(spritePathFa + spritePathHead + spritePathColor[MessageSender.GetTheInstance().GetSkinNum()]);
         snakeDizzyHeadSpr = Resources.Load<Sprite>(spritePathFa + spritePathDizzy + spritePathColor[MessageSender.GetTheInstance().GetSkinNum()]);
         snakeBodySpr = Resources.Load<Sprite>(spritePathFa + spritePathBody + spritePathColor[MessageSender.GetTheInstance().GetSkinNum()]);
-        print("FinishLoadSkinSprite SkinNum=" + MessageSender.GetTheInstance().GetSkinNum());
+        //print("FinishLoadSkinSprite SkinNum=" + MessageSender.GetTheInstance().GetSkinNum());
 
     }
 
@@ -125,13 +124,15 @@ public class DiamondSnake : MonoBehaviour
     {
 
         snakeBodyObj = Resources.Load<GameObject>("Prefabs/DiamondPre/DiamondSnakeBody");
+        //if (snakeBodyObj == null) print("null");
+
+
         snakeBodySpriteRenderer = snakeBodyObj.GetComponent<SpriteRenderer>();
         snakeBodySpriteRenderer.sprite = snakeBodySpr;
-
-        if (snakeBodyObj == null) print("null");
         thisSpriteRenderer = GetComponent<SpriteRenderer>();
         thisSpriteRenderer.sprite = snakeHeadSpr;
-        print("get the skin");
+
+        //print("get the skin");
     }
 
 
@@ -140,25 +141,15 @@ public class DiamondSnake : MonoBehaviour
         nextSnakeBodyObj = Instantiate(snakeBodyObj, transform.position, transform.rotation) as GameObject;
         nextSnakeBody = nextSnakeBodyObj.GetComponent<DiamondSnakeBody>();
         snakeLength = 1;
-        nextSnakeBody.SetAllMemember(gameObject, transform, null, snakeLength, null, null);
-    }
+        nextSnakeBody.SetAllMemember(null, snakeLength, null);
 
-
-    private void SetStartHeadAndTail()
-    {
-
-        snakeHeadObj = gameObject;
-
-        snakeTailObj = nextSnakeBodyObj;
         snakeTail = nextSnakeBody;
-        snakeTailTrans = nextSnakeBodyObj.transform;
 
         snakeBodySpriteRenderer.sortingOrder--;
 
     }
 
-
-
+    
 
     //***************************************************************************
     //对蛇的相关操作
@@ -166,40 +157,33 @@ public class DiamondSnake : MonoBehaviour
 
     private void AddOneBody()
     {
+        snakeLength++;
 
         DiamondGameManager.GetTheInstance().SetScore(0);
-
-        snakeLength++;
-        tSnakeBodyObj = Instantiate(snakeBodyObj, snakeTailTrans.position, snakeTailTrans.rotation) as GameObject;
+        tSnakeBodyObj = Instantiate(snakeBodyObj, snakeTail.transform.position, snakeTail.transform.rotation) as GameObject;
         tSnakeBody = tSnakeBodyObj.GetComponent<DiamondSnakeBody>();
 
-        snakeTail.SetNextBody(tSnakeBodyObj, tSnakeBody);
-
-        tSnakeBody.SetAllMemember(snakeTailObj, snakeTailTrans, snakeTail, snakeLength, null, null);
-
-        snakeTailObj = tSnakeBodyObj;
+        tSnakeBody.SetAllMemember(snakeTail, snakeLength, null);
+        snakeTail.SetNextBody(tSnakeBodyObj);
         snakeTail = tSnakeBody;
-        snakeTailTrans = tSnakeBodyObj.transform;
-        snakeBodySpriteRenderer.sortingOrder--;
+        snakeBodySpriteRenderer.sortingOrder--;//确定体节的前后覆盖关系
         DiamondGameManager.GetTheInstance().SetLenText(snakeLength);
     }
 
     private void MinusOneBody()
     {
         DiamondGameManager.GetTheInstance().SetScore(1);
+
         if (snakeLength == 1)
         {
             whetherAlive = false;
             return;
         }
         snakeLength--;
-        snakeTailObj = snakeTail.GetLastSnakeBodyObj();
-        snakeTail = snakeTailObj.GetComponent<DiamondSnakeBody>();
-        snakeTailTrans = snakeTailObj.transform;
 
+        snakeTail = snakeTail.GetLastSnakeBodyDiamondBody();
         Destroy(snakeTail.GetNextSnakeBodyObj());
-
-        snakeTail.SetNextBody(null, null);
+        snakeTail.SetNextBody(null);
         snakeBodySpriteRenderer.sortingOrder++;
         DiamondGameManager.GetTheInstance().SetLenText(snakeLength);
     }
@@ -245,24 +229,20 @@ public class DiamondSnake : MonoBehaviour
     {
         tVel = new Vector3(0f, 0f, 0f);
         tdPos = new Vector3(snakeSpeed, 0f, 0f);
-
         whetherAlive = true;
-
-
         theInstance = this;
-        thisRigidbody2d = GetComponent<Rigidbody2D>();
+        
 
-        SetStartHistoryArray();
-        LoadSkinSprite();
-        SetPrefabSnakeHeadAndBody();
+        SetStartHistoryArray();//纯数值处理，对前面的流程无依赖
+        LoadSkinSprite();//加载皮肤资源，对前面的流程无依赖
+        SetPrefabSnakeHeadAndBody();//加载pefab，并设定皮肤，要求前面已加载皮肤
+        snakeBodySpriteRenderer.sortingOrder = 0;//要求prefab已加载
 
-
-        InstantiateFirstBody();
-
-        SetStartHeadAndTail();
+        InstantiateFirstBody();//生成第一个体节
 
 
-        snakeBodySpriteRenderer.sortingOrder = 0;
+        DiamondGameManager.GetTheInstance().SetLenText(snakeLength);
+        DiamondGameManager.GetTheInstance().SetSpeedText((int)(snakeSpeed));
     }
     void Update()
     {
@@ -274,14 +254,6 @@ public class DiamondSnake : MonoBehaviour
 
     }
     
-    // Start is called before the first frame update
-    void Start()
-    {
-
-        DiamondGameManager.GetTheInstance().SetLenText(snakeLength);
-        DiamondGameManager.GetTheInstance().SetSpeedText((int)(snakeSpeed));
-    }
-
 
 
     private void FixedUpdate()

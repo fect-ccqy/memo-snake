@@ -4,12 +4,10 @@ using UnityEngine;
 
 public class DiamondSnakeBody : MonoBehaviour
 {
-    private GameObject lastSnakeBodyObj;
-    private Transform lastSnakeBodyTrans;
+    //private GameObject lastSnakeBodyObj;
     private DiamondSnakeBody lastsnakebody;
     private int theNum;//第几个体节  从1开始  不包括蛇头
     private GameObject nextSnakeBodyObj;
-    private DiamondSnakeBody nextsnakebody;
 
 
     private Vector2[] historyPosArray = new Vector2[DiamondSnake.GetArrayLength()];
@@ -26,27 +24,24 @@ public class DiamondSnakeBody : MonoBehaviour
     //get  set
 
 
-    public void SetAllMemember(GameObject _lastSnakeBodyObj, Transform _lastSnakeBodyTrans, DiamondSnakeBody _lastsnakebody, int thenum, GameObject _nextSnakeBodyObj, DiamondSnakeBody _nextsnakebody)
+    public void SetAllMemember(DiamondSnakeBody _lastsnakebody, int thenum, GameObject _nextSnakeBodyObj)
     {
-        lastSnakeBodyObj = _lastSnakeBodyObj;
-        lastSnakeBodyTrans = _lastSnakeBodyTrans;
         theNum = thenum;
         nextSnakeBodyObj = _nextSnakeBodyObj;
-        nextsnakebody = _nextsnakebody;
         lastsnakebody = _lastsnakebody;
     }
 
 
-    public void SetNextBody(GameObject _nextSnakeBodyObj, DiamondSnakeBody _nextsnakebody)
+    public void SetNextBody(GameObject _nextSnakeBodyObj)
     {
         nextSnakeBodyObj = _nextSnakeBodyObj;
-        nextsnakebody = _nextsnakebody;
     }
 
+    
 
-    public GameObject GetLastSnakeBodyObj()
+    public DiamondSnakeBody GetLastSnakeBodyDiamondBody()
     {
-        return lastSnakeBodyObj;
+        return lastsnakebody;
     }
 
 
@@ -125,21 +120,7 @@ public class DiamondSnakeBody : MonoBehaviour
             qtail += arrayLen;
         }
     }
-
-    //***************************************************************************
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
+    
     private void FixedUpdate()
     {
         MoveThisBody();

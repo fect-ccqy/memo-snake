@@ -16,12 +16,7 @@ public class ColorLine : MonoBehaviour
         thisSpriteRender.color = theColors[Random.Range(0, colorNum)];
     }
 
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    
 
     // Update is called once per frame
     void Update()

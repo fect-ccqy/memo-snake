@@ -24,18 +24,5 @@ public class StaticBlockLine : MonoBehaviour
         blockTransforms[num2].position = tPos;
 
     }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     
 }

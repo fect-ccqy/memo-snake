@@ -50,7 +50,7 @@ public class DiamondGameManager : MonoBehaviour
             default:
                 break;
         }
-        SetScoreText();
+        //SetScoreText();
     }
 
     public void SetLenText(int len)
@@ -63,14 +63,14 @@ public class DiamondGameManager : MonoBehaviour
     }
     private void SetScoreText()
     {
-        scoreText.text = score.ToString();
+        scoreText.text = (score + (int)DiamondSnake.GetTheInstance().transform.position.x).ToString();
     }
 
 
     public void TheSnakDie()
     {
         Time.timeScale = 0;
-        dieScoreText.text = score.ToString();
+        dieScoreText.text = (score+(int)DiamondSnake.GetTheInstance().transform.position.x).ToString();
         dieUIObj.SetActive(true);
     }
     
@@ -95,18 +95,15 @@ public class DiamondGameManager : MonoBehaviour
 
 
         Time.timeScale = 1f;
-
+        
+    }
+    private void Start()
+    {
         SetScoreText();
     }
-    // Start is called before the first frame update
-    void Start()
+    private void Update()
     {
-
+        SetScoreText();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 }

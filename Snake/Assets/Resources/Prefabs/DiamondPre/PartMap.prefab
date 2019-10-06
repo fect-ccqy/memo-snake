@@ -109,7 +109,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1864266542576402871}
   - component: {fileID: 9090267741006605956}
-  - component: {fileID: 9187126222652176638}
   - component: {fileID: 8739495157715856681}
   m_Layer: 0
   m_Name: DiamondFood (11)
@@ -182,22 +181,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &9187126222652176638
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 571581467932409220}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.2
 --- !u!114 &8739495157715856681
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -221,7 +204,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2001134005737866298}
   - component: {fileID: 1721521916315244059}
-  - component: {fileID: 7446186836331591613}
   - component: {fileID: 7597848611442560501}
   m_Layer: 0
   m_Name: DiamondFood (1)
@@ -294,22 +276,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &7446186836331591613
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 680373534032348766}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.2
 --- !u!114 &7597848611442560501
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -333,7 +299,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4014730219124479679}
   - component: {fileID: 3958006552960799993}
-  - component: {fileID: 4693475526329954474}
   - component: {fileID: 2277426725991880412}
   m_Layer: 0
   m_Name: DiamondFood (3)
@@ -406,22 +371,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &4693475526329954474
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 709193709972996611}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.2
 --- !u!114 &2277426725991880412
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -445,7 +394,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3132948964937557255}
   - component: {fileID: 971073614562184099}
-  - component: {fileID: 5655109981748369285}
   - component: {fileID: 4128078154730816364}
   m_Layer: 0
   m_Name: DiamondFood (9)
@@ -518,22 +466,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &5655109981748369285
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1261816545960872339}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.2
 --- !u!114 &4128078154730816364
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -557,7 +489,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1018775935768812811}
   - component: {fileID: 4676738281751042168}
-  - component: {fileID: 4778671203615871584}
   - component: {fileID: 6706714102948230451}
   m_Layer: 0
   m_Name: DiamondFood (12)
@@ -630,22 +561,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &4778671203615871584
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1437149154488334661}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.2
 --- !u!114 &6706714102948230451
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -747,7 +662,6 @@ GameObject:
   - component: {fileID: 3507072190848981347}
   - component: {fileID: 5692039688177555012}
   - component: {fileID: 2415283412506010981}
-  - component: {fileID: 3850114170751182639}
   m_Layer: 0
   m_Name: Diamonds4
   m_TagString: Untagged
@@ -832,32 +746,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numText: {fileID: 5355311137280634735}
---- !u!61 &3850114170751182639
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1989345149407377945}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2, y: 2}
-    newSize: {x: 2, y: 2}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 2, y: 2}
-  m_EdgeRadius: 0
 --- !u!1 &2031468314897303248
 GameObject:
   m_ObjectHideFlags: 0
@@ -968,7 +856,6 @@ GameObject:
   - component: {fileID: 3764183894792564066}
   - component: {fileID: 4651202322468813825}
   - component: {fileID: 6724562540236846261}
-  - component: {fileID: 3136234796860263467}
   m_Layer: 0
   m_Name: Diamonds3
   m_TagString: Untagged
@@ -1053,32 +940,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numText: {fileID: 7194686087683567251}
---- !u!61 &3136234796860263467
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2227626368171760637}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2, y: 2}
-    newSize: {x: 2, y: 2}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 2, y: 2}
-  m_EdgeRadius: 0
 --- !u!1 &2249870784431887217
 GameObject:
   m_ObjectHideFlags: 0
@@ -1342,7 +1203,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2584915927292880408}
   - component: {fileID: 538067099191476723}
-  - component: {fileID: 5809549507327982610}
   - component: {fileID: 1932387167550832852}
   m_Layer: 0
   m_Name: DiamondFood (2)
@@ -1415,22 +1275,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &5809549507327982610
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2319474487571890914}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.2
 --- !u!114 &1932387167550832852
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1554,7 +1398,6 @@ GameObject:
   - component: {fileID: 8906908352830275802}
   - component: {fileID: 4357161292739539411}
   - component: {fileID: 7809379658441121386}
-  - component: {fileID: 7531570091771570994}
   m_Layer: 0
   m_Name: Diamonds2
   m_TagString: Untagged
@@ -1639,32 +1482,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numText: {fileID: 7807250140890678924}
---- !u!61 &7531570091771570994
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2327152843666080347}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2, y: 2}
-    newSize: {x: 2, y: 2}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 2, y: 2}
-  m_EdgeRadius: 0
 --- !u!1 &2582909784361330873
 GameObject:
   m_ObjectHideFlags: 0
@@ -2302,7 +2119,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3204222880897185986}
   - component: {fileID: 7518799698709306626}
-  - component: {fileID: 5438848145687990807}
   - component: {fileID: 6220854571708261443}
   m_Layer: 0
   m_Name: DiamondFood (10)
@@ -2375,22 +2191,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &5438848145687990807
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3368823779965220763}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.2
 --- !u!114 &6220854571708261443
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2744,7 +2544,6 @@ GameObject:
   m_Component:
   - component: {fileID: 656397340521205770}
   - component: {fileID: 5536576425737461189}
-  - component: {fileID: 126160281045217641}
   - component: {fileID: 1312275055555451011}
   m_Layer: 0
   m_Name: DiamondFood (6)
@@ -2817,22 +2616,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &126160281045217641
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4329964883951935045}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.2
 --- !u!114 &1312275055555451011
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2856,7 +2639,6 @@ GameObject:
   m_Component:
   - component: {fileID: 9165929927255595406}
   - component: {fileID: 2414395973204659330}
-  - component: {fileID: 1858114475079159451}
   - component: {fileID: 1978596772597839864}
   m_Layer: 0
   m_Name: DiamondFood (7)
@@ -2929,22 +2711,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &1858114475079159451
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4586636954272249532}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.2
 --- !u!114 &1978596772597839864
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3166,7 +2932,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1971996106061807844}
   - component: {fileID: 5218258657339647777}
-  - component: {fileID: 323983028394194706}
   - component: {fileID: 1698273430127749203}
   m_Layer: 0
   m_Name: DiamondFood (13)
@@ -3239,22 +3004,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &323983028394194706
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4919198891439810805}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.2
 --- !u!114 &1698273430127749203
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3278,7 +3027,6 @@ GameObject:
   m_Component:
   - component: {fileID: 463509466690999698}
   - component: {fileID: 1153533916575707330}
-  - component: {fileID: 3925558401738057865}
   - component: {fileID: 7007897533015878503}
   m_Layer: 0
   m_Name: DiamondFood
@@ -3351,22 +3099,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &3925558401738057865
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5027601940169809211}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.2
 --- !u!114 &7007897533015878503
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3687,7 +3419,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8289127356287756149}
   - component: {fileID: 892736061235618061}
-  - component: {fileID: 8374153018260905137}
   - component: {fileID: 6724922742198604340}
   m_Layer: 0
   m_Name: DiamondFood (8)
@@ -3760,22 +3491,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &8374153018260905137
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5529923632134724730}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.2
 --- !u!114 &6724922742198604340
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3799,7 +3514,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3723218067079742342}
   - component: {fileID: 4751315500276778088}
-  - component: {fileID: 5670819271880974518}
   - component: {fileID: 6653207998072636362}
   m_Layer: 0
   m_Name: DiamondFood (5)
@@ -3872,22 +3586,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &5670819271880974518
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5783340512636097106}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.2
 --- !u!114 &6653207998072636362
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3911,7 +3609,6 @@ GameObject:
   m_Component:
   - component: {fileID: 722963493566184718}
   - component: {fileID: 201351300846343020}
-  - component: {fileID: 3717823302645725672}
   - component: {fileID: 6013022060840954757}
   m_Layer: 0
   m_Name: DiamondFood (4)
@@ -3984,22 +3681,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &3717823302645725672
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5975001150390969696}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.2
 --- !u!114 &6013022060840954757
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4024,7 +3705,6 @@ GameObject:
   - component: {fileID: 580636441640258261}
   - component: {fileID: 4571054318552897444}
   - component: {fileID: 6089438299742282873}
-  - component: {fileID: 1390663624751920520}
   m_Layer: 0
   m_Name: Diamonds1
   m_TagString: Untagged
@@ -4109,32 +3789,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numText: {fileID: 3383810334705854250}
---- !u!61 &1390663624751920520
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6080009345389259685}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2, y: 2}
-    newSize: {x: 2, y: 2}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 2, y: 2}
-  m_EdgeRadius: 0
 --- !u!1 &6152730759483362316
 GameObject:
   m_ObjectHideFlags: 0
@@ -4442,8 +4096,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6135255770932808083}
   - component: {fileID: 4894155435406417381}
-  - component: {fileID: 6472013631613369763}
-  - component: {fileID: 791313444851558061}
   m_Layer: 0
   m_Name: LargeDeathWall900 (1)
   m_TagString: DeathWall
@@ -4514,53 +4166,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &6472013631613369763
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6275361873271363029}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 9, y: 1}
-    newSize: {x: 9, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 9, y: 1}
-  m_EdgeRadius: 0
---- !u!50 &791313444851558061
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6275361873271363029}
-  m_BodyType: 2
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!1 &6632302292716635895
 GameObject:
   m_ObjectHideFlags: 0
@@ -4571,8 +4176,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6635707223006290033}
   - component: {fileID: 6743328798251068779}
-  - component: {fileID: 2139823028583325018}
-  - component: {fileID: 8783772489152315688}
   m_Layer: 0
   m_Name: LargeDeathWall900
   m_TagString: DeathWall
@@ -4643,53 +4246,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &2139823028583325018
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6632302292716635895}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 9, y: 1}
-    newSize: {x: 9, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 9, y: 1}
-  m_EdgeRadius: 0
---- !u!50 &8783772489152315688
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6632302292716635895}
-  m_BodyType: 2
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!1 &6801767375091783371
 GameObject:
   m_ObjectHideFlags: 0
@@ -4953,8 +4509,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4642290039878096860}
   - component: {fileID: 2039188901364176694}
-  - component: {fileID: 5342269547984324918}
-  - component: {fileID: 1510908947022902433}
   m_Layer: 0
   m_Name: LargeDeathWall900 (2)
   m_TagString: DeathWall
@@ -5025,53 +4579,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &5342269547984324918
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7129126825895950088}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 9, y: 1}
-    newSize: {x: 9, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 9, y: 1}
-  m_EdgeRadius: 0
---- !u!50 &1510908947022902433
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7129126825895950088}
-  m_BodyType: 2
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!1 &7216584259431563802
 GameObject:
   m_ObjectHideFlags: 0
@@ -5636,8 +5143,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4806392427074306041}
   - component: {fileID: 5530959312480019241}
-  - component: {fileID: 6957437484519471256}
-  - component: {fileID: 8076876878577121914}
   m_Layer: 0
   m_Name: LargeDeathWall900 (3)
   m_TagString: DeathWall
@@ -5708,53 +5213,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &6957437484519471256
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8455904491398723697}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 9, y: 1}
-    newSize: {x: 9, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 9, y: 1}
-  m_EdgeRadius: 0
---- !u!50 &8076876878577121914
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8455904491398723697}
-  m_BodyType: 2
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!1 &9107205962502383309
 GameObject:
   m_ObjectHideFlags: 0
