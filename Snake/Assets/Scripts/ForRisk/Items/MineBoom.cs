@@ -18,8 +18,8 @@ public class MineBoom : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Snake.GetTheInstance().GetMine();
-        RiskGameManager.GetTheInstance().SetMapPosZero(transform.position);
-        RiskGameManager.GetTheInstance().CreateOneMine();
+        RiskMapCreater.GetTheInstance().SetMapPosZero(transform.position);
+        RiskMapCreater.GetTheInstance().CreateOneMine();
         Destroy(this.gameObject);
     }
 }

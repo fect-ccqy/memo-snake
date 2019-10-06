@@ -55,7 +55,7 @@ public class ColorSnake : MonoBehaviour
     private float snakeSpeed = 25f;    
     private Rigidbody2D thisRigidbody2d;
     private Vector2 dHeadTowards;
-    private Vector3 midScreenPos = new Vector3(Screen.width / 2, Screen.height / 2, 0f);
+    //private Vector3 midScreenPos = new Vector3(Screen.width / 2, Screen.height / 2, 0f);
 
 
    

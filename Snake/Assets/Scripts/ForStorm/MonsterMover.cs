@@ -14,22 +14,9 @@ public class MonsterMover : MonoBehaviour
     {
 
         dPos = transform.position;
-        //thron.position = new Vector3(5, 5, 0);
     }
 
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
+    
 
     private void FixedUpdate()
     {

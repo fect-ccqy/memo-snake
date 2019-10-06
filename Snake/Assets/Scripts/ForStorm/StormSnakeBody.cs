@@ -4,13 +4,10 @@ using UnityEngine;
 
 public class StormSnakeBody : MonoBehaviour
 {
-
-    private GameObject lastSnakeBodyObj;
-    private Transform lastSnakeBodyTrans;
+    
     private StormSnakeBody lastsnakebody;
     private int theNum;//第几个体节  从1开始  不包括蛇头
     private GameObject nextSnakeBodyObj;
-    private StormSnakeBody nextsnakebody;
 
 
     private Vector2[] historyPosArray = new Vector2[StormSnake.GetArrayLength()];
@@ -27,27 +24,24 @@ public class StormSnakeBody : MonoBehaviour
     //get  set
 
 
-    public void SetAllMemember(GameObject _lastSnakeBodyObj, Transform _lastSnakeBodyTrans, StormSnakeBody _lastsnakebody, int thenum, GameObject _nextSnakeBodyObj, StormSnakeBody _nextsnakebody)
+    public void SetAllMemember(StormSnakeBody _lastsnakebody, int thenum, GameObject _nextSnakeBodyObj)
     {
-        lastSnakeBodyObj = _lastSnakeBodyObj;
-        lastSnakeBodyTrans = _lastSnakeBodyTrans;
         theNum = thenum;
         nextSnakeBodyObj = _nextSnakeBodyObj;
-        nextsnakebody = _nextsnakebody;
         lastsnakebody = _lastsnakebody;
     }
 
 
-    public void SetNextBody(GameObject _nextSnakeBodyObj, StormSnakeBody _nextsnakebody)
+    public void SetNextBody(GameObject _nextSnakeBodyObj)
     {
         nextSnakeBodyObj = _nextSnakeBodyObj;
-        nextsnakebody = _nextsnakebody;
     }
 
 
-    public GameObject GetLastSnakeBodyObj()
+
+    public StormSnakeBody GetLastSnakeBodyStormBody()
     {
-        return lastSnakeBodyObj;
+        return lastsnakebody;
     }
 
 
@@ -55,7 +49,6 @@ public class StormSnakeBody : MonoBehaviour
     {
         return nextSnakeBodyObj;
     }
-
 
     //***************************************************************************
 
@@ -129,18 +122,7 @@ public class StormSnakeBody : MonoBehaviour
 
     //***************************************************************************
 
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
+        
     private void FixedUpdate()
     {
         MoveThisBody();
@@ -157,8 +139,6 @@ public class StormSnakeBody : MonoBehaviour
         {
 
             StormSnake.GetTheInstance().MinusOneBody();
-
-            print("烫烫烫烫烫烫");
         }
     }
 }

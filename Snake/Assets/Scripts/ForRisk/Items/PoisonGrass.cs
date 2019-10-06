@@ -18,8 +18,8 @@ public class PoisonGrass : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Snake.GetTheInstance().GetOnePoison();
-        RiskGameManager.GetTheInstance().SetMapPosZero(transform.position);
-        RiskGameManager.GetTheInstance().CreateOneGrass();
+        RiskMapCreater.GetTheInstance().SetMapPosZero(transform.position);
+        RiskMapCreater.GetTheInstance().CreateOneGrass();
         Destroy(this.gameObject);
     }
 }

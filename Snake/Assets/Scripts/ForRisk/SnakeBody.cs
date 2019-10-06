@@ -4,12 +4,9 @@ using UnityEngine;
 
 public class SnakeBody : MonoBehaviour
 {
-    private GameObject lastSnakeBodyObj;
-    private Transform lastSnakeBodyTrans;
     private SnakeBody lastsnakebody;
     private int theNum;//第几个体节  从1开始  不包括蛇头
     private GameObject nextSnakeBodyObj;
-    private SnakeBody nextsnakebody;
 
 
     private Vector2[] historyPosArray = new Vector2[Snake.GetArrayLength()];
@@ -26,27 +23,25 @@ public class SnakeBody : MonoBehaviour
     //get  set
 
 
-    public void SetAllMemember(GameObject _lastSnakeBodyObj, Transform _lastSnakeBodyTrans, SnakeBody _lastsnakebody, int thenum, GameObject _nextSnakeBodyObj, SnakeBody _nextsnakebody)
+    public void SetAllMemember(SnakeBody _lastsnakebody, int thenum, GameObject _nextSnakeBodyObj)
     {
-        lastSnakeBodyObj = _lastSnakeBodyObj;
-        lastSnakeBodyTrans = _lastSnakeBodyTrans;
+        
         theNum = thenum;
         nextSnakeBodyObj = _nextSnakeBodyObj;
-        nextsnakebody = _nextsnakebody;
         lastsnakebody = _lastsnakebody;
     }
 
 
-    public void SetNextBody(GameObject _nextSnakeBodyObj, SnakeBody _nextsnakebody)
+    public void SetNextBody(GameObject _nextSnakeBodyObj)
     {
         nextSnakeBodyObj = _nextSnakeBodyObj;
-        nextsnakebody = _nextsnakebody;
+        
     }
 
 
-    public GameObject GetLastSnakeBodyObj()
+    public SnakeBody GetLastSnakeBodyObj()
     {
-        return lastSnakeBodyObj;
+        return lastsnakebody;
     }
 
 
@@ -127,31 +122,9 @@ public class SnakeBody : MonoBehaviour
     }
 
     //***************************************************************************
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
     private void FixedUpdate()
     {
-        /*
-        Vector3 dPos = lastSnakeBodyTrans.position - transform.position;
-        if (dPos.sqrMagnitude > sqrDistance)
-        {
-            transform.position += Snake.snakeSpeed * Time.fixedDeltaTime * dPos * 0.45f;
-        }*/
-
-        //transform.position += Snake.snakeSpeed * Time.fixedDeltaTime * dPos* 0.45f;
-        //transform.position += Snake.snakeSpeed * Time.fixedDeltaTime * dPos * dPos.sqrMagnitude * 0.12f;
-        //transform.position += Snake.snakeSpeed * Time.fixedDeltaTime * dPos * dPos.sqrMagnitude*dPos.sqrMagnitude * 0.04f;
 
         MoveThisBody();
 

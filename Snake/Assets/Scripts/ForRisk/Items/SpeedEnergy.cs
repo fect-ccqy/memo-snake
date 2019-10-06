@@ -18,8 +18,8 @@ public class SpeedEnergy : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Snake.GetTheInstance().GetEnergy();
-        RiskGameManager.GetTheInstance().SetMapPosZero(transform.position);
-        RiskGameManager.GetTheInstance().CreateOneEnergy();
+        RiskMapCreater.GetTheInstance().SetMapPosZero(transform.position);
+        RiskMapCreater.GetTheInstance().CreateOneEnergy();
         Destroy(this.gameObject);
     }
 }

@@ -4,13 +4,9 @@ using UnityEngine;
 
 public class MoveThorn : MonoBehaviour
 {
-    private float speed=5;
+    private float speed = 5;
 
-    private float lifetime=0;
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
+    private float lifetime = 0;
 
     // Update is called once per frame
     void Update()
@@ -31,13 +27,12 @@ public class MoveThorn : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (lifetime >0.1f)
+
+        if ((lifetime > 0.1f) && (collision.transform.tag == "DeathWall"))
         {
 
-            if (collision.transform.tag == "DeathWall")
-            {
-                Destroy(this.gameObject);
-            }
+            Destroy(this.gameObject);
+
         }
     }
 }

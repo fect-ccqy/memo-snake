@@ -101,6 +101,7 @@
     <Compile Include="Assets\Scripts\ForRisk\Items\Sheild.cs" />
     <Compile Include="Assets\Scripts\ForRisk\Items\SpeedEnergy.cs" />
     <Compile Include="Assets\Scripts\ForRisk\RiskGameManager.cs" />
+    <Compile Include="Assets\Scripts\ForRisk\RiskMapCreater.cs" />
     <Compile Include="Assets\Scripts\ForRisk\Snake.cs" />
     <Compile Include="Assets\Scripts\ForRisk\SnakeBody.cs" />
     <Compile Include="Assets\Scripts\ForStorm\ExitObj.cs" />
@@ -116,6 +117,7 @@
     <Compile Include="Assets\Scripts\RiskStormCameraFollower.cs" />
     <Compile Include="Assets\Scripts\SceneButtonManager.cs" />
     <Compile Include="Assets\Scripts\SoundPlayer.cs" />
+    <Compile Include="Assets\TestScript.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>D:/unity 2018/Snake/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>

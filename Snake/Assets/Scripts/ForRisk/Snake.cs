@@ -28,7 +28,7 @@ public class Snake : MonoBehaviour
     private int snakeLength;//不包括蛇头
     private Rigidbody2D thisRigidbody2d;
     private Vector2 dHeadTowards;
-    private Vector3 midScreenPos = new Vector3(Screen.width / 2, Screen.height / 2, 0f);
+
     //会频繁使用的临时变量
     private GameObject tSnakeBodyObj;
     private SnakeBody tSnakeBody;
@@ -62,12 +62,8 @@ public class Snake : MonoBehaviour
     //头尾以及下一个体节
     private GameObject nextSnakeBodyObj;
     private SnakeBody nextSnakeBody;
-
-    private GameObject snakeHeadObj;
-    private GameObject snakeTailObj;
+    
     private SnakeBody snakeTail;
-    private Transform snakeTailTrans;
-
 
 
 
@@ -145,22 +141,13 @@ public class Snake : MonoBehaviour
         nextSnakeBodyObj = Instantiate(snakeBodyObj, transform.position, transform.rotation) as GameObject;
         nextSnakeBody = nextSnakeBodyObj.GetComponent<SnakeBody>();
         snakeLength = 1;
-        nextSnakeBody.SetAllMemember(gameObject, transform, null, snakeLength, null, null);
-    }
+        nextSnakeBody.SetAllMemember( null, snakeLength, null);
 
-
-    private void SetStartHeadAndTail()
-    {
-
-        snakeHeadObj = gameObject;
-
-        snakeTailObj = nextSnakeBodyObj;
         snakeTail = nextSnakeBody;
-        snakeTailTrans = nextSnakeBodyObj.transform;
 
         snakeBodySpriteRenderer.sortingOrder--;
-
     }
+    
 
 
 
@@ -171,31 +158,29 @@ public class Snake : MonoBehaviour
     private void AddOneBody()
     {
         snakeLength++;
-        tSnakeBodyObj = Instantiate(snakeBodyObj, snakeTailTrans.position, snakeTailTrans.rotation) as GameObject;
+        tSnakeBodyObj = Instantiate(snakeBodyObj, snakeTail.transform.position, snakeTail.transform.rotation) as GameObject;
         tSnakeBody = tSnakeBodyObj.GetComponent<SnakeBody>();
 
-        snakeTail.SetNextBody(tSnakeBodyObj, tSnakeBody);
 
-        tSnakeBody.SetAllMemember(snakeTailObj, snakeTailTrans, snakeTail, snakeLength, null, null);
-
-        snakeTailObj = tSnakeBodyObj;
+        tSnakeBody.SetAllMemember(snakeTail, snakeLength, null);
+        snakeTail.SetNextBody(tSnakeBodyObj);
         snakeTail = tSnakeBody;
-        snakeTailTrans = tSnakeBodyObj.transform;
+
         snakeBodySpriteRenderer.sortingOrder--;
+
     }
 
 
     private void MinusOneBody()
     {
         snakeLength--;
-        snakeTailObj = snakeTail.GetLastSnakeBodyObj();
-        snakeTail = snakeTailObj.GetComponent<SnakeBody>();
-        snakeTailTrans = snakeTailObj.transform;
 
+        snakeTail = snakeTail.GetLastSnakeBodyObj();
         Destroy(snakeTail.GetNextSnakeBodyObj());
-
-        snakeTail.SetNextBody(null, null);
+        snakeTail.SetNextBody(null);
         snakeBodySpriteRenderer.sortingOrder++;
+
+        
     }
 
 
@@ -258,75 +243,6 @@ public class Snake : MonoBehaviour
     }
 
 
-    //***************************************************************************
-
-
-
-    private void Awake()
-    {
-        whetherAlive = true;
-
-        whetherGetSheild = false;
-        sheildTimer = 0f;
-        theSheild.SetActive(false);
-
-        highSpeedTimer = 0f;
-        whetherHighSpeed = false;
-        theInstance = this;
-        thisRigidbody2d = GetComponent<Rigidbody2D>();
-
-        SetStartHistoryArray();
-        LoadSkinSprite();
-        SetPrefabSnakeHeadAndBody();
-
-
-        InstantiateFirstBody();
-
-        SetStartHeadAndTail();
-
-        RiskGameManager.GetTheInstance().SetLenText(snakeLength);
-        RiskGameManager.GetTheInstance().SetSpeedText((int)(snakeSpeed));
-
-
-        snakeBodySpriteRenderer.sortingOrder = 0;
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (whetherAlive)
-        {
-            if (whetherHighSpeed)
-            {
-                whetherHighSpeed = highSpeedTimer > 0;
-                highSpeedTimer -= Time.deltaTime;
-                if (!whetherHighSpeed)
-                {
-                    RiskGameManager.GetTheInstance().SetSpeedText((int)(snakeSpeed));
-                }
-            }
-            if (whetherGetSheild)
-            {
-                whetherGetSheild = sheildTimer > 0;
-                theSheild.SetActive(whetherGetSheild);
-                sheildTimer -= Time.deltaTime;
-            }
-        }
-
-        else
-        {
-            RiskGameManager.GetTheInstance().TheSnakDie();
-        }
-       
-
-    }
-
     private void SetVelocity()
     {
 
@@ -340,6 +256,8 @@ public class Snake : MonoBehaviour
         }
     }
 
+
+    //吃到物体后触发的方法
     public void GetOneFood()
     {
         RiskGameManager.GetTheInstance().SetScore(0);
@@ -365,7 +283,7 @@ public class Snake : MonoBehaviour
         if (snakeLength <= 2)
         {
             whetherAlive = false;
-            RiskGameManager.GetTheInstance().SetLenText(snakeLength-2);
+            RiskGameManager.GetTheInstance().SetLenText(snakeLength - 2);
             return;
         }
         MinusNBody(2);
@@ -415,6 +333,71 @@ public class Snake : MonoBehaviour
         theSheild.SetActive(true);
     }
 
+
+
+    //***************************************************************************
+
+
+
+    private void Awake()
+    {
+        whetherAlive = true;
+
+        whetherGetSheild = false;
+        sheildTimer = 0f;
+        theSheild.SetActive(false);
+
+        highSpeedTimer = 0f;
+        whetherHighSpeed = false;
+        theInstance = this;
+        thisRigidbody2d = GetComponent<Rigidbody2D>();
+
+        SetStartHistoryArray();
+        LoadSkinSprite();
+        SetPrefabSnakeHeadAndBody();
+        snakeBodySpriteRenderer.sortingOrder = 0;
+
+        InstantiateFirstBody();
+        
+
+        RiskGameManager.GetTheInstance().SetLenText(snakeLength);
+        RiskGameManager.GetTheInstance().SetSpeedText((int)(snakeSpeed));
+
+        
+    }
+    
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (whetherAlive)
+        {
+            if (whetherHighSpeed)
+            {
+                whetherHighSpeed = highSpeedTimer > 0;
+                highSpeedTimer -= Time.deltaTime;
+                if (!whetherHighSpeed)
+                {
+                    RiskGameManager.GetTheInstance().SetSpeedText((int)(snakeSpeed));
+                }
+            }
+            if (whetherGetSheild)
+            {
+                whetherGetSheild = sheildTimer > 0;
+                theSheild.SetActive(whetherGetSheild);
+                sheildTimer -= Time.deltaTime;
+            }
+        }
+
+        else
+        {
+            RiskGameManager.GetTheInstance().TheSnakDie();
+        }
+       
+
+    }
+
+
     private void FixedUpdate()
     {
 
@@ -428,25 +411,12 @@ public class Snake : MonoBehaviour
         //蛇头相对鼠标的位移矢量的模长平方小于1.6则不进行方向和位置的变化避免出现抖动
         if (dHeadTowards.sqrMagnitude > 1.6f)
         {
-            //dHeadTowards = Input.mousePosition - midScreenPos;//获得鼠标相对屏幕中心的位移矢量  即方法2的处理方式
             transform.up = dHeadTowards;
             SetVelocity();
 
         }
 
-
-
-        //********
-        //if(!Input.anyKey)
-
-        //movement
-
-        //transform.position += transform.up * snakeSpeed * Time.fixedDeltaTime;
-
-
-        //fortest
-        if (Input.GetKeyDown(KeyCode.Space)) DoubleSnakeBody();
-        if (Input.GetKeyDown(KeyCode.D)) HalfSnakeBody();
+        
 
         SetHistoryArray();
 

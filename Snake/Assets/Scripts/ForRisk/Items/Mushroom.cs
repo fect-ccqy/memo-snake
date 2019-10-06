@@ -19,8 +19,8 @@ public class Mushroom : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Snake.GetTheInstance().GetMushRoom();
-        RiskGameManager.GetTheInstance().SetMapPosZero(transform.position);
-        RiskGameManager.GetTheInstance().CreateOneMushroom();
+        RiskMapCreater.GetTheInstance().SetMapPosZero(transform.position);
+        RiskMapCreater.GetTheInstance().CreateOneMushroom();
         Destroy(this.gameObject);
     }
 }

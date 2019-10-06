@@ -23,7 +23,7 @@ public class DiamondSnake : MonoBehaviour
 
     private int snakeLength;//不包括蛇头
     private Vector2 dHeadTowards;
-    private Vector3 midScreenPos = new Vector3(Screen.width / 2, Screen.height / 2, 0f);
+    //private Vector3 midScreenPos = new Vector3(Screen.width / 2, Screen.height / 2, 0f);
 
     //会频繁使用的临时变量
     private GameObject tSnakeBodyObj;

@@ -11,22 +11,12 @@ public class ThronShooter : MonoBehaviour
     
     [SerializeField] private float speed;
     [SerializeField] private float timer;
-    [SerializeField] private float tPer;
+    private float tPer;
 
     private void Awake()
     {
+        tPer = 2.2f - 0.6f * MessageSender.GetTheInstance().GetDifficultyNum();
         moveThron = Resources.Load<GameObject>("Prefabs/StormPre/MoveThorn");
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
     private void FixedUpdate()
     {
