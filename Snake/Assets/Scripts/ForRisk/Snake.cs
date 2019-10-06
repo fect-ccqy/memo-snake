@@ -272,7 +272,6 @@ public class Snake : MonoBehaviour
 
         highSpeedTimer = 0f;
         whetherHighSpeed = false;
-
         theInstance = this;
         thisRigidbody2d = GetComponent<Rigidbody2D>();
 
@@ -287,6 +286,9 @@ public class Snake : MonoBehaviour
 
         RiskGameManager.GetTheInstance().SetLenText(snakeLength);
         RiskGameManager.GetTheInstance().SetSpeedText((int)(snakeSpeed));
+
+
+        snakeBodySpriteRenderer.sortingOrder = 0;
     }
 
     // Start is called before the first frame update

@@ -13,7 +13,7 @@ public class DiamondSnake : MonoBehaviour
     //一些会用到的变量
 
     private bool whetherAlive = true;
-    private float moveRange = 14.5f;
+    private float moveRange = 14.5f;//蛇可以上下移动的范围
 
     private float snakeSpeed = 25f;
 
@@ -243,7 +243,6 @@ public class DiamondSnake : MonoBehaviour
 
     private void Awake()
     {
-
         tVel = new Vector3(0f, 0f, 0f);
         tdPos = new Vector3(snakeSpeed, 0f, 0f);
 
@@ -263,6 +262,7 @@ public class DiamondSnake : MonoBehaviour
         SetStartHeadAndTail();
 
 
+        snakeBodySpriteRenderer.sortingOrder = 0;
     }
     void Update()
     {
@@ -287,129 +287,27 @@ public class DiamondSnake : MonoBehaviour
     private void FixedUpdate()
     {
 
+        //不选择rigidbody2d.velocity的移动方式是因为会出现蛇头部分进入墙体
 
-        /*
-        tdPos.y = (Camera.main.ScreenToWorldPoint(Input.mousePosition).y - transform.position.y) * snakeSpeed / 7f;
-        transform.up =tVel;
-        transform.position += tVel * Time.fixedDeltaTime;
-
-        if (transform.position.y > 5f)
-        {
-            transform.position = new Vector3(transform.position.x, 5f,transform.position.z);
-        }*/
-
-        //蛇头相对鼠标的位移矢量(世界坐标)
-        transform.position += tdPos * Time.fixedDeltaTime;
-
-        dHeadTowards = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
-
-        
-        //蛇头相对鼠标的位移矢量的模长平方小于1.6则不进行方向和位置的变化避免出现抖动
-        if (dHeadTowards.sqrMagnitude > 1.6f)
-        {
-            
-
-            //dHeadTowards = Input.mousePosition - midScreenPos;//获得鼠标相对屏幕中心的位移矢量  
-            transform.up = dHeadTowards;
-
-
-
-            
-            if (transform.position.y >= moveRange)
-            {
-                transform.position = new Vector3(transform.position.x, moveRange, transform.position.z);
-                if (dHeadTowards.y > 0)
-                {
-
-                    tVel.y = 0;
-                }
-                else
-                {
-                    tVel.y = dHeadTowards.y * snakeSpeed / 8f;
-                }
-            }
-            else if (transform.position.y <= -moveRange)
-            {
-                transform.position = new Vector3(transform.position.x, -moveRange, transform.position.z);
-                if (dHeadTowards.y < 0)
-                {
-
-                    tVel.y = 0;
-                }
-                else
-                {
-                    tVel.y = dHeadTowards.y * snakeSpeed / 8f;
-                }
-
-            }
-            else
-            {
-                tVel.y = dHeadTowards.y * snakeSpeed / 8f;
-            }
-
-            
-            
-        //    if(v)
-            thisRigidbody2d.velocity = tVel;
-
-            //这里使用transform和rigibody混合的移动方式
-            //若只用transform，在墙边时会抖动
-            //若只使用rigidbody，在墙边x方向速度也会减慢*/
-            
-            /*
-            transform.up = dHeadTowards;
-
-            tVel.x = snakeSpeed;
-            tVel.y = dHeadTowards.y * snakeSpeed / 7f;
-            thisRigidbody2d.velocity = tVel;
-            //*/
-            /*
-            transform.up = dHeadTowards;
-
-            tVel.x = snakeSpeed;
-            tVel.y = dHeadTowards.y * snakeSpeed / 7f;
-
-            transform.position += tVel * Time.fixedDeltaTime;
-            //*/
-            
-        }
-        
-
-        SetHistoryArray();
-
-        if (Input.GetKeyDown(KeyCode.Space)) AddOneBody();
-
-        //********
-        //if(!Input.anyKey)
-
-        //movement
-
-        //transform.position += transform.up * snakeSpeed * Time.fixedDeltaTime;
-
-
-        //fortest
-
-    }
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-
-        //避免出现在离开物体时，蛇头相对鼠标的位移矢量的模长平方小于1.6，速度依然保持与物体接触时相同的bug
         dHeadTowards = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
         transform.up = dHeadTowards;
-        thisRigidbody2d.velocity = transform.up * snakeSpeed;
+        tdPos.y = dHeadTowards.y * snakeSpeed / 7f;
+
+        transform.position += tdPos * Time.fixedDeltaTime;
+
+        if (transform.position.y >= moveRange)
+        {
+            transform.position = new Vector3(transform.position.x, moveRange, transform.position.z);
+           
+        }
+        else if (transform.position.y <= -moveRange)
+        {
+            transform.position = new Vector3(transform.position.x, -moveRange, transform.position.z);
+        }
+
+        SetHistoryArray();
+        
+
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.transform.tag == "Hurtful")
-        {
-
-            MinusOneBody();
-
-        }
-        if (collision.transform.tag == "monster")
-        {
-            whetherAlive = false;
-        }
-    }
 }

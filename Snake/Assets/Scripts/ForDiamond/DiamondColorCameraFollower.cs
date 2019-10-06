@@ -6,6 +6,7 @@ public class DiamondColorCameraFollower : MonoBehaviour
 {
 
     [SerializeField] private Transform playerTransform;
+    [SerializeField] private float xoffset;
     private Vector3 tPos;
 
     
@@ -14,7 +15,7 @@ public class DiamondColorCameraFollower : MonoBehaviour
     private void Awake()
     {
         tPos = transform.position;
-        tPos.x = playerTransform.position.x+26f;
+        tPos.x = playerTransform.position.x+xoffset;
         tPos.y = playerTransform.position.y;
         transform.position = tPos;
     }
@@ -24,7 +25,7 @@ public class DiamondColorCameraFollower : MonoBehaviour
     {
 
         tPos = transform.position;
-        tPos.x = playerTransform.position.x+26f;
+        tPos.x = playerTransform.position.x+xoffset;
 
         transform.position = tPos;
 

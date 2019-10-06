@@ -951,6 +951,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerTransform: {fileID: 391773873}
+  xoffset: 26
 --- !u!81 &347602405
 AudioListener:
   m_ObjectHideFlags: 0
@@ -1198,7 +1199,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 4
+  m_Constraints: 7
 --- !u!58 &391773871
 CircleCollider2D:
   m_ObjectHideFlags: 0

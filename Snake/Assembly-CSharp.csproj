@@ -66,6 +66,19 @@
     <Compile Include="Assets\Scripts\CrossScene\BKMusicPlayer.cs" />
     <Compile Include="Assets\Scripts\CrossScene\ButtonSoundPlayer.cs" />
     <Compile Include="Assets\Scripts\CrossScene\MessageSender.cs" />
+    <Compile Include="Assets\Scripts\ForColor\BoxColorTrigger.cs" />
+    <Compile Include="Assets\Scripts\ForColor\CircleColorTrigger.cs" />
+    <Compile Include="Assets\Scripts\ForColor\ColorCreateMapTrigger.cs" />
+    <Compile Include="Assets\Scripts\ForColor\ColorGameManager.cs" />
+    <Compile Include="Assets\Scripts\ForColor\ColorLine.cs" />
+    <Compile Include="Assets\Scripts\ForColor\ColorMapCreater.cs" />
+    <Compile Include="Assets\Scripts\ForColor\ColorSnake.cs" />
+    <Compile Include="Assets\Scripts\ForColor\ColorSnakeBody.cs" />
+    <Compile Include="Assets\Scripts\ForColor\LineMove.cs" />
+    <Compile Include="Assets\Scripts\ForColor\LineMoveTwo.cs" />
+    <Compile Include="Assets\Scripts\ForColor\MoveItem.cs" />
+    <Compile Include="Assets\Scripts\ForColor\RoundMove.cs" />
+    <Compile Include="Assets\Scripts\ForColor\StaticBlockLine.cs" />
     <Compile Include="Assets\Scripts\ForDiamond\CreateMapTrigger.cs" />
     <Compile Include="Assets\Scripts\ForDiamond\DiamondColorCameraFollower.cs" />
     <Compile Include="Assets\Scripts\ForDiamond\DiamondFood.cs" />
@@ -79,7 +92,6 @@
     <Compile Include="Assets\Scripts\ForInterface\GameModeSetter.cs" />
     <Compile Include="Assets\Scripts\ForInterface\HelpInterfaceSetter.cs" />
     <Compile Include="Assets\Scripts\ForInterface\LevelSetter.cs" />
-    <Compile Include="Assets\Scripts\ForInterface\SceneButtonManager.cs" />
     <Compile Include="Assets\Scripts\ForInterface\SkinSetter.cs" />
     <Compile Include="Assets\Scripts\ForInterface\SoundSlider.cs" />
     <Compile Include="Assets\Scripts\ForRisk\Items\MineBoom.cs" />
@@ -102,6 +114,7 @@
     <Compile Include="Assets\Scripts\ForStorm\ThornMover.cs" />
     <Compile Include="Assets\Scripts\ForStorm\ThronShooter.cs" />
     <Compile Include="Assets\Scripts\RiskStormCameraFollower.cs" />
+    <Compile Include="Assets\Scripts\SceneButtonManager.cs" />
     <Compile Include="Assets\Scripts\SoundPlayer.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>D:/unity 2018/Snake/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>

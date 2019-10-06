@@ -226,7 +226,6 @@ public class StormSnake : MonoBehaviour
     private void Awake()
     {
         whetherAlive = true;
-        
 
         theInstance = this;
         thisRigidbody2d = GetComponent<Rigidbody2D>();
@@ -241,6 +240,7 @@ public class StormSnake : MonoBehaviour
         SetStartHeadAndTail();
 
 
+        snakeBodySpriteRenderer.sortingOrder = 0;
     }
     void Update()
     {
