@@ -82,12 +82,12 @@ public class DiamondSnake : MonoBehaviour
 
     public Vector3 GetHistoryPos()
     {
-        return historyPosArray[(qhead + DiamondSnake.oneStepNum - 1) % DiamondSnake.arrayLength];
+        return historyPosArray[(qhead + DiamondSnake.oneStepNum -1) % DiamondSnake.arrayLength];
     }
 
     public Quaternion GetHistoryRot()
     {
-        return historyRotArray[(qhead + DiamondSnake.oneStepNum - 1) % DiamondSnake.arrayLength];
+        return historyRotArray[(qhead + DiamondSnake.oneStepNum -1) % DiamondSnake.arrayLength];
     }
 
 
@@ -263,7 +263,7 @@ public class DiamondSnake : MonoBehaviour
 
         dHeadTowards = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
         transform.up = dHeadTowards;
-        tdPos.y = dHeadTowards.y * snakeSpeed / 7f;
+        tdPos.y = dHeadTowards.y * snakeSpeed / 15f;
 
         transform.position += tdPos * Time.fixedDeltaTime;
 

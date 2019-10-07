@@ -52,7 +52,7 @@ public class ColorSnake : MonoBehaviour
 
     //用蛇头的移动
     private float moveRange = 17f;//蛇可以上下移动的范围
-    private float snakeSpeed = 25f;    
+    private float snakeSpeed = 20f;    
     private Rigidbody2D thisRigidbody2d;
     private Vector2 dHeadTowards;
     //private Vector3 midScreenPos = new Vector3(Screen.width / 2, Screen.height / 2, 0f);
@@ -173,9 +173,9 @@ public class ColorSnake : MonoBehaviour
         whetherAlive = true;
         theInstance = this;
         tVel = new Vector3(0f, 0f, 0f);
+        
+        snakeSpeed = 20f + 5f * MessageSender.GetTheInstance().GetDifficultyNum();
         tdPos = new Vector3(snakeSpeed, 0f, 0f);
-
-
 
         thisRigidbody2d = GetComponent<Rigidbody2D>();
         thisSpriteRenderer = GetComponent<SpriteRenderer>();
@@ -193,7 +193,7 @@ public class ColorSnake : MonoBehaviour
 
         SetStartHeadAndTail();//生成第一个体节之后使用
 
-        AddNBody(10);//只有在初始时生成一定长度，之后就用不上了
+        AddNBody(20);//只有在初始时生成一定长度，之后就用不上了
     }
 
 
@@ -236,7 +236,7 @@ public class ColorSnake : MonoBehaviour
         dHeadTowards = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
         transform.up = dHeadTowards;
 
-        tdPos.y = dHeadTowards.y * snakeSpeed / 7f;
+        tdPos.y = dHeadTowards.y * snakeSpeed / 12f;
 
         transform.position += tdPos * Time.fixedDeltaTime;
 

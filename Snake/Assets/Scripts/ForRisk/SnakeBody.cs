@@ -25,7 +25,7 @@ public class SnakeBody : MonoBehaviour
 
     public void SetAllMemember(SnakeBody _lastsnakebody, int thenum, GameObject _nextSnakeBodyObj)
     {
-        
+
         theNum = thenum;
         nextSnakeBodyObj = _nextSnakeBodyObj;
         lastsnakebody = _lastsnakebody;
@@ -35,7 +35,7 @@ public class SnakeBody : MonoBehaviour
     public void SetNextBody(GameObject _nextSnakeBodyObj)
     {
         nextSnakeBodyObj = _nextSnakeBodyObj;
-        
+
     }
 
 
@@ -55,7 +55,7 @@ public class SnakeBody : MonoBehaviour
 
 
 
-    
+
     private void Awake()
     {
         oneStepNum = Snake.GetOneStepNum();
@@ -122,7 +122,7 @@ public class SnakeBody : MonoBehaviour
     }
 
     //***************************************************************************
-    
+
     private void FixedUpdate()
     {
 

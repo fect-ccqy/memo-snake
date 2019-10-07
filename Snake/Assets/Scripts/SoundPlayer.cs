@@ -17,8 +17,9 @@ public class SoundPlayer : MonoBehaviour
         audioClips[3] = Resources.Load<AudioClip>("Sounds/boom");
         audioClips[4] = Resources.Load<AudioClip>("Sounds/energy");
         audioClips[5] = Resources.Load<AudioClip>("Sounds/sheild");
-        //audioClips[6] = Resources.Load<AudioClip>("Sounds/");
+        audioClips[6] = Resources.Load<AudioClip>("Sounds/wisdom");
         audioClips[7] = Resources.Load<AudioClip>("Sounds/wall");
+        audioClips[8] = Resources.Load<AudioClip>("Sounds/arrow");
     }
     // Start is called before the first frame update
     void Start()

@@ -99,6 +99,7 @@
     <Compile Include="Assets\Scripts\ForRisk\Items\OneBodyFood.cs" />
     <Compile Include="Assets\Scripts\ForRisk\Items\PoisonGrass.cs" />
     <Compile Include="Assets\Scripts\ForRisk\Items\Sheild.cs" />
+    <Compile Include="Assets\Scripts\ForRisk\Items\SmartGrass.cs" />
     <Compile Include="Assets\Scripts\ForRisk\Items\SpeedEnergy.cs" />
     <Compile Include="Assets\Scripts\ForRisk\RiskGameManager.cs" />
     <Compile Include="Assets\Scripts\ForRisk\RiskMapCreater.cs" />

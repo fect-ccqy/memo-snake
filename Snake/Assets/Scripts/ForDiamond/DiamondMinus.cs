@@ -23,7 +23,7 @@ public class DiamondMinus : MonoBehaviour
         tdPos = transform.position - DiamondSnake.GetTheInstance().transform.position;
         if ((-xyOffset < tdPos.x) && (tdPos.x < xyOffset) && (-xyOffset < tdPos.y) && (tdPos.y < xyOffset) && (tdPos.sqrMagnitude < 29.7f))
         {
-
+            SoundPlayer.PlayItemsSound(7);
             DiamondSnake.GetTheInstance().MinusNBody(minusNum);
             Destroy(this.gameObject);
         }

@@ -81,12 +81,12 @@ public class StormSnake : MonoBehaviour
 
     public Vector3 GetHistoryPos()
     {
-        return historyPosArray[(qhead + StormSnake.oneStepNum - 1) % StormSnake.arrayLength];
+        return historyPosArray[(qhead + StormSnake.oneStepNum - 2) % StormSnake.arrayLength];
     }
 
     public Quaternion GetHistoryRot()
     {
-        return historyRotArray[(qhead + StormSnake.oneStepNum - 1) % StormSnake.arrayLength];
+        return historyRotArray[(qhead + StormSnake.oneStepNum - 2) % StormSnake.arrayLength];
     }
 
 

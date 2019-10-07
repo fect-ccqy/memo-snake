@@ -18,10 +18,13 @@ public class Snake : MonoBehaviour
 
     private bool whetherHighSpeed;
     private float highSpeedTimer;
-
+    //private bool whetherWisdom;
+    private int wisdomNum = 4;
     private bool whetherGetSheild;
     private float sheildTimer;
     [SerializeField] private GameObject theSheild;
+
+    private Vector3 tarPosition;
 
     private float snakeSpeed = 20f;
     private float highSpeedK = 1.4f;
@@ -85,12 +88,12 @@ public class Snake : MonoBehaviour
 
     public Vector3 GetHistoryPos()
     {
-        return historyPosArray[(qhead + Snake.oneStepNum - 1) % Snake.arrayLength];
+        return historyPosArray[(qhead + Snake.oneStepNum - 2) % Snake.arrayLength];
     }
 
     public Quaternion GetHistoryRot()
     {
-        return historyRotArray[(qhead + Snake.oneStepNum - 1) % Snake.arrayLength];
+        return historyRotArray[(qhead + Snake.oneStepNum - 2) % Snake.arrayLength];
     }
 
 
@@ -260,7 +263,23 @@ public class Snake : MonoBehaviour
     //吃到物体后触发的方法
     public void GetOneFood()
     {
+
+        RiskMapCreater.GetTheInstance().ClearTarPosList();
         RiskGameManager.GetTheInstance().SetScore(0);
+        wisdomNum--;
+        if (wisdomNum < 0)
+        {
+            wisdomNum = 0;
+
+        }
+        else if (wisdomNum == 0)
+        {
+            BackFromWisdom();
+        }
+        else
+        {
+            RiskMapCreater.GetTheInstance().SnakeGetTheWisdom();
+        }
         AddOneBody();
         SoundPlayer.PlayItemsSound(0);
         RiskGameManager.GetTheInstance().SetLenText(snakeLength);
@@ -332,8 +351,22 @@ public class Snake : MonoBehaviour
         sheildTimer = 5f;
         theSheild.SetActive(true);
     }
+    public void GetWisdom()
+    {
+        SoundPlayer.PlayItemsSound(6);
+        wisdomNum = 4;
+        thisSpriteRenderer.sprite = snakeDizzyHeadSpr;
+        thisRigidbody2d.velocity = Vector3.zero;
 
-
+        tarPosition=RiskMapCreater.GetTheInstance().GetNextTarPos();
+        //Time.timeScale = 0;
+    }
+    public void BackFromWisdom()
+    {
+        
+        thisSpriteRenderer.sprite = snakeHeadSpr;
+        
+    }
 
     //***************************************************************************
 
@@ -342,7 +375,8 @@ public class Snake : MonoBehaviour
     private void Awake()
     {
         whetherAlive = true;
-
+        //whetherWisdom = false;
+        wisdomNum = 0;
         whetherGetSheild = false;
         sheildTimer = 0f;
         theSheild.SetActive(false);
@@ -401,33 +435,55 @@ public class Snake : MonoBehaviour
     private void FixedUpdate()
     {
 
-
-
-
-        //蛇头相对鼠标的位移矢量(世界坐标)
-        dHeadTowards = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
-
-
-        //蛇头相对鼠标的位移矢量的模长平方小于1.6则不进行方向和位置的变化避免出现抖动
-        if (dHeadTowards.sqrMagnitude > 1.6f)
+        if (wisdomNum==0)
         {
-            transform.up = dHeadTowards;
-            SetVelocity();
 
+            //蛇头相对鼠标的位移矢量(世界坐标)
+            dHeadTowards = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+
+
+            //蛇头相对鼠标的位移矢量的模长平方小于1.6则不进行方向和位置的变化避免出现抖动
+            if (dHeadTowards.sqrMagnitude > 1.6f)
+            {
+                transform.up = dHeadTowards;
+                SetVelocity();
+
+            }
+
+
+
+            
+        }
+        else
+        {
+            if ((tarPosition - transform.position).sqrMagnitude < 0.1f)
+            {
+                tarPosition= RiskMapCreater.GetTheInstance().GetNextTarPos();
+            }
+            transform.up = tarPosition - transform.position;
+            if (whetherHighSpeed)
+            {
+                transform.position += transform.up * snakeSpeed * highSpeedK * Time.fixedDeltaTime;
+            }
+            else
+            {
+                transform.position += transform.up * snakeSpeed * Time.fixedDeltaTime;
+            }
+            
         }
 
-        
-
         SetHistoryArray();
-
     }
     private void OnCollisionExit2D(Collision2D collision)
     {
-
-        //避免出现在离开物体时，蛇头相对鼠标的位移矢量的模长平方小于1.6，速度依然保持与物体接触时相同的bug
-        dHeadTowards = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
-        transform.up = dHeadTowards;
-        SetVelocity();
+        if (wisdomNum==0)
+        {
+            //避免出现在离开物体时，蛇头相对鼠标的位移矢量的模长平方小于1.6，速度依然保持与物体接触时相同的bug
+            dHeadTowards = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+            transform.up = dHeadTowards;
+            SetVelocity();
+        }
+        
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

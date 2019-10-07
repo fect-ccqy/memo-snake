@@ -21,13 +21,16 @@ public class RiskMapCreater : MonoBehaviour
 
 
 
-
+    private List<Vector3> foodPosList=new List<Vector3>();
+    private int[,] findMap = new int[120, 120];//用来寻路
+    private List<Vector3> tarPosList = new List<Vector3>();
 
 
 
     // checktype/settype分别为1,3,5,7,9   order: 0,1,2,3,4   itemtype: 1,2,3,4,5  在map上的存储数字
     private int[] wallNum = new int[5];
     private GameObject[] wall = new GameObject[5];
+
 
     //道具的checktype/settype均为1   表示尺寸
     //itemtype 6,7,8,9,10,,,,,在map上的存储
@@ -46,14 +49,20 @@ public class RiskMapCreater : MonoBehaviour
     private GameObject minePrefab;//9
     private GameObject energyPrefab;//10speeder
     private GameObject sheildPrefab;//11
-
-
+    private GameObject wisdomPrefab;//12
 
 
     //*********************************************************************************************************************************************
+    //常用临时变量
+
+    List<int> fPosXArray = new List<int>();
+    List<int> fPosYArray = new List<int>();
+    List<int> lastIndex = new List<int>();
+
+    //*********************************************************************************************************************************************
     //用于测试
-    public GameObject testObj;
-    private GameObject[,] gameobjMap = new GameObject[120, 120];
+    //public GameObject testObj;
+    //private GameObject[,] gameobjMap = new GameObject[120, 120];
 
 
 
@@ -190,7 +199,7 @@ public class RiskMapCreater : MonoBehaviour
             wallNum[3] = 2;
             wallNum[4] = 1;
 
-            foodNum = 5;
+            foodNum = 2;
             poisonNum = 8;
             mushroomNum = 1;
             mineNum = 4;
@@ -236,7 +245,7 @@ public class RiskMapCreater : MonoBehaviour
         minePrefab = Resources.Load<GameObject>("Prefabs/RiskPre/Boom");
         energyPrefab = Resources.Load<GameObject>("Prefabs/RiskPre/Energy");
         sheildPrefab = Resources.Load<GameObject>("Prefabs/RiskPre/Sheild");
-        
+        wisdomPrefab = Resources.Load<GameObject>("Prefabs/RiskPre/Wisdom");
 
     }
 
@@ -284,6 +293,13 @@ public class RiskMapCreater : MonoBehaviour
         {
 
             CreateOneSheild();
+
+        }
+
+        for (int i = 0; i < wisdomNum; i++)
+        {
+
+            CreateOneWisdom();
 
         }
     }
@@ -348,6 +364,8 @@ public class RiskMapCreater : MonoBehaviour
         }
         Instantiate(foodPrefab, tPos, rotHorizontal);
         SetMapPos(tPos, settype, layMod, itemtype);
+        foodPosList.Add(tPos);
+
     }
 
     public void CreateOneGrass()
@@ -465,6 +483,31 @@ public class RiskMapCreater : MonoBehaviour
         SetMapPos(tPos, settype, layMod, itemtype);
     }
 
+    public void CreateOneWisdom()
+    {
+        int itemtype = 12;
+        int settype = 1;
+
+        Vector3 tPos = GetRandomPos();
+        int layMod = 0;
+        while (true)
+        {
+            if (CheckPos(tPos, settype, layMod))
+            {
+                break;
+
+            }
+            else
+            {
+                tPos = GetRandomPos();
+            }
+        }
+
+        Instantiate(wisdomPrefab, tPos, rotHorizontal);
+
+        SetMapPos(tPos, settype, layMod, itemtype);
+    }
+
     //生成物体后对数据的操作
     private void SetMapPos(Vector3 setpos, int setType, int layWay, int itemtype)
     {
@@ -516,13 +559,200 @@ public class RiskMapCreater : MonoBehaviour
         SetMapPos(setpos, 1, 0, 0);
     }
 
+    public void RemoveOneFood(Vector3 setPos)
+    {
+        RiskMapCreater.GetTheInstance().SetMapPosZero(setPos);
+        foodPosList.Remove(setPos);
+    }
+
+    public void SnakeEatTheWisdom(Vector3 setPos)
+    {
+        RiskMapCreater.GetTheInstance().SetMapPosZero(setPos);
+
+        //foodPosList.Remove(setPos);
+        SetFindMap();
+        GetTheWay();
+    }
+
+    public void SnakeGetTheWisdom()
+    {
+        //foodPosList.Remove(setPos);
+        SetFindMap();
+        GetTheWay();
+    }
+    public void TestWisdom()
+    {
+        SetFindMap();
+        GetTheWay();
+    }
+    private void SetFindMap()
+    {
+        for(int i = 0; i <120; i++)
+        {
+            for (int j = 0; j < 120; j++) {
+
+                if(((gameMap[i, j] == 0) || (gameMap[i, j] == 6) || (gameMap[i, j] == 8)|| (gameMap[i, j] == 11)) && ((17 <= i) && (17 <= j) && (i <= 103) && (j <= 103)))
+                {
+                    findMap[i, j] = 0;
+                }
+                else
+                {
+                    findMap[i, j] = -1;
+                }
+                
+            }
+        }
+        int arraylen=foodPosList.Count;
+        for(int i = 0; i < arraylen; i++)
+        {
+            findMap[60+(int)foodPosList[i].x, 60+(int)foodPosList[i].y] = 1;
+            
+        }
+
+    }
+
+    private void GetTheWay()
+    {
+
+        tarPosList.Clear();
+        fPosXArray.Clear();
+        fPosYArray.Clear();
+        lastIndex.Clear();
+        Vector3 snakePos=Snake.GetTheInstance().transform.position;
+        int tPosx, tPosy;
+        
+        int head = -1;
+
+        tPosx =(int) Mathf.Round(snakePos.x);
+        tPosy =(int) Mathf.Round(snakePos.y);
+
+        
+        if (findMap[60 + tPosx, 60 + tPosy]<0)
+        {
+
+        }
+
+        fPosXArray.Add(tPosx);
+        fPosYArray.Add(tPosy);
+        lastIndex.Add(-1);
+        head = 0 ;
+        findMap[60 + tPosx, 60 + tPosy] = -2;
+        
+        while (true)
+        {
+            tPosx = fPosXArray[head];
+            tPosy = fPosYArray[head];
+            //findMap[60 + (int)fPosArray[head].x, 60 + (int)fPosArray[head].y]
+
+            if (findMap[60 + tPosx+1, 60 + tPosy] == 0)
+            {
+                fPosXArray.Add(tPosx+1);
+                fPosYArray.Add(tPosy);
+                lastIndex.Add(head);
+                findMap[60 + tPosx+1, 60 + tPosy] = -2;
+            }
+            else if (findMap[60 + tPosx+1, 60 + tPosy]  == 1)
+            {
+
+                fPosXArray.Add(tPosx+1);
+                fPosYArray.Add(tPosy);
+                lastIndex.Add(head);
+                findMap[60 + tPosx+1, 60 + tPosy] = -2;
+                break;
+            }
+
+
+            if (findMap[60 + tPosx-1, 60 + tPosy] == 0)
+            {
+                fPosXArray.Add(tPosx-1);
+                fPosYArray.Add(tPosy);
+                lastIndex.Add(head);
+                findMap[60 + tPosx-1, 60 + tPosy] = -2;
+            }
+            else if (findMap[60 + tPosx-1, 60 + tPosy] == 1)
+            {
+
+                fPosXArray.Add(tPosx-1);
+                fPosYArray.Add(tPosy);
+                lastIndex.Add(head);
+                findMap[60 + tPosx-1, 60 + tPosy] = -2;
+                break;
+            }
+
+            if (findMap[60 + tPosx, 60 + tPosy+1] == 0)
+            {
+                fPosXArray.Add(tPosx);
+                fPosYArray.Add(tPosy+1);
+                lastIndex.Add(head);
+                findMap[60 + tPosx, 60 + tPosy+1] = -2;
+            }
+            else if (findMap[60 + tPosx, 60 + tPosy + 1] == 1)
+            {
+
+                fPosXArray.Add(tPosx);
+                fPosYArray.Add(tPosy + 1);
+                lastIndex.Add(head);
+                findMap[60 + tPosx, 60 + tPosy + 1] = -2;
+                break;
+            }
+
+            if (findMap[60 + tPosx, 60 + tPosy-1] == 0)
+            {
+                fPosXArray.Add(tPosx);
+                fPosYArray.Add(tPosy - 1);
+                lastIndex.Add(head);
+                findMap[60 + tPosx, 60 + tPosy - 1] = -2;
+            }
+            else if (findMap[60 + tPosx, 60 + tPosy - 1] == 1)
+            {
+
+                fPosXArray.Add(tPosx);
+                fPosYArray.Add(tPosy - 1);
+                lastIndex.Add(head);
+                findMap[60 + tPosx, 60 + tPosy - 1] = -2;
+                break;
+            }
 
 
 
+
+            //fPosArray[head].x;
+            head++;
+        }
+
+        int thead=fPosXArray.Count-1;
+        
+
+        while (thead != -1)
+        {
+            tarPosList.Add(new Vector3(fPosXArray[thead], fPosYArray[thead]));
+            findMap[60 + fPosXArray[thead], 60 + fPosYArray[thead]] = -3;
+            thead = lastIndex[thead];
+            //tarPosList.Add(new Vector3(fPosXArray[thead], fPosXArray[thead]));
+            
+        }
+        fPosXArray.Clear();
+        fPosYArray.Clear();
+        lastIndex.Clear();
+        //tarPosList.Reverse();
+        //Snake.GetTheInstance().BackFromWisdom();
+    }
+
+    public Vector3 GetNextTarPos()
+    {
+        Vector3 tarPos=tarPosList[tarPosList.Count-1];
+        tarPosList.RemoveAt(tarPosList.Count - 1);
+        return tarPos;
+    }
+    public void ClearTarPosList()
+    {
+        tarPosList.Clear();
+    }
     private void Awake()
     {
         theInstance = this;
         //用于测试
+        /*
         Vector3 tobjpos = new Vector3(0f, 0f, 0f);
         for (int i = -50; i <= 50; i++)
         {
@@ -533,7 +763,7 @@ public class RiskMapCreater : MonoBehaviour
                 gameobjMap[60 + i, 60 + j] = Instantiate(testObj, tobjpos, Quaternion.identity) as GameObject;
             }
         }
-
+        */
 
         SetStartData();
 
@@ -548,6 +778,7 @@ public class RiskMapCreater : MonoBehaviour
     {
 
         //用于测试
+        /*
         Vector3 tobjpos = new Vector3(0f, 0f, 0f);
         for (int i = -50; i <= 50; i++)
         {
@@ -555,8 +786,13 @@ public class RiskMapCreater : MonoBehaviour
             {
                 tobjpos.x = i;
                 tobjpos.y = j;
-                gameobjMap[60 + i, 60 + j].SetActive(gameMap[60 + i, 60 + j] != 0);
+                gameobjMap[60 + i, 60 + j].SetActive(findMap[60 + i, 60 + j] < -2);
             }
+        }*/
+
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            Snake.GetTheInstance().BackFromWisdom();
         }
     }
 }

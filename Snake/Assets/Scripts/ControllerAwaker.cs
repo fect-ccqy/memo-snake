@@ -25,7 +25,7 @@ public class ControllerAwaker : MonoBehaviour
     // Start is called before the first frame update
     private void Awake()
     {
-
+        Screen.fullScreen = true;
 
 
 

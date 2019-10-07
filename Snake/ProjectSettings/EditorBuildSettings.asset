@@ -20,12 +20,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Interface/SettingGameModeScene.unity
     guid: 943de66b8576cbc49942250509879707
-  - enabled: 0
-    path: 
-    guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 0
-    path: 
-    guid: 0aecf83bb080c8940aaf4c8e61340ba5
   - enabled: 1
     path: Assets/Scenes/Interface/SettingLevelScene.unity
     guid: fc0a809d84ed25046b4102db60c990ec
